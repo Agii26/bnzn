@@ -193,6 +193,13 @@ input, textarea, select {
   box-shadow:  inset 3px 0 0 var(--purple);
 }
 
+/* ── BOTTOM NAV — mobile only ───────────────────────────────────────────────── */
+
+/* Hidden on desktop by default. Media query below turns it on for mobile. */
+.bottom-nav {
+  display: none;
+}
+
 /* ── HEADER SEARCH RESPONSIVE ───────────────────────────────────────────────── */
 
 /* Hidden on narrow screens, shown ≥520px */
@@ -281,6 +288,8 @@ input, textarea, select {
     height:     auto;
     overflow-y: unset;
   }
+
+  .bottom-nav { display: flex; }
 
   /* Push scroll content above fixed BottomNav */
   .bottom-nav-spacer {

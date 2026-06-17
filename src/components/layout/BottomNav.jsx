@@ -27,6 +27,7 @@ export default function BottomNav() {
     <nav
       role="navigation"
       aria-label="Mobile navigation"
+      className="bottom-nav"
       style={{
         position:       'fixed',
         bottom:         0,
@@ -35,7 +36,6 @@ export default function BottomNav() {
         zIndex:         'var(--z-sticky)',
         height:         56,
         paddingBottom:  'env(safe-area-inset-bottom)',
-        display:        'flex',
         alignItems:     'stretch',
         background:     'rgba(8, 8, 14, 0.92)',
         backdropFilter: 'blur(20px)',
