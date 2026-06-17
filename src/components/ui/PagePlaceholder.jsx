@@ -1,0 +1,221 @@
+/**
+ * PagePlaceholder — Phase 1 upgrade
+ *
+ * Props:
+ *   icon        — Lucide icon component  e.g. import { User } from 'lucide-react'
+ *   title       — Page name
+ *   phase       — Phase number when real content arrives
+ *   description — What this page will do
+ *   features    — Array of upcoming feature strings
+ *   color       — 'purple' | 'blue' | 'red' | 'green'  (default: 'purple')
+ */
+
+const COLOR_MAP = {
+  purple: {
+    faint:     'var(--purple-faint)',
+    glow:      'var(--purple-glow)',
+    text:      'var(--purple)',
+    light:     'var(--purple-light)',
+    iconGlow:  'var(--glow-purple)',
+    orb:       'var(--purple-glow)',
+    gradient:  'var(--gradient-red-purple)',
+  },
+  blue: {
+    faint:     'var(--blue-faint)',
+    glow:      'var(--blue-glow)',
+    text:      'var(--blue)',
+    light:     'var(--blue-light)',
+    iconGlow:  'var(--glow-blue)',
+    orb:       'var(--blue-glow)',
+    gradient:  'var(--gradient-blue-purple)',
+  },
+  red: {
+    faint:     'var(--red-faint)',
+    glow:      'var(--red-glow)',
+    text:      'var(--red)',
+    light:     'var(--red-light)',
+    iconGlow:  'var(--glow-red)',
+    orb:       'var(--red-glow)',
+    gradient:  'var(--gradient-red-purple)',
+  },
+  green: {
+    faint:     'var(--green-faint)',
+    glow:      'var(--green-glow)',
+    text:      'var(--green)',
+    light:     'var(--green-light)',
+    iconGlow:  'var(--glow-green)',
+    orb:       'var(--green-glow)',
+    gradient:  'var(--gradient-blue-purple)',
+  },
+}
+
+export default function PagePlaceholder({
+  icon: Icon,
+  title,
+  phase,
+  description,
+  features = [],
+  color = 'purple',
+}) {
+  const c = COLOR_MAP[color]
+
+  return (
+    <div
+      className="anim-page-enter"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 'var(--sp-8)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background glow orbs */}
+      <div style={{
+        position: 'absolute',
+        top: '50%', left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 480, height: 480,
+        background: `radial-gradient(circle, ${c.orb} 0%, transparent 65%)`,
+        pointerEvents: 'none',
+        borderRadius: '50%',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '15%', left: '20%',
+        width: 220, height: 220,
+        background: 'radial-gradient(circle, var(--blue-glow) 0%, transparent 70%)',
+        pointerEvents: 'none',
+        borderRadius: '50%',
+      }} />
+
+      {/* Content */}
+      <div style={{ position: 'relative', textAlign: 'center', maxWidth: 480 }}>
+
+        {/* Floating icon — gradient square (no emoji) */}
+        {Icon && (
+          <div
+            className="anim-float"
+            style={{
+              width: 80, height: 80,
+              background: c.gradient,
+              borderRadius: 'var(--radius-xl)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto var(--sp-6)',
+              boxShadow: c.iconGlow,
+            }}
+          >
+            <Icon size={36} color="white" strokeWidth={1.5} aria-hidden="true" />
+          </div>
+        )}
+
+        {/* Phase badge */}
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 'var(--sp-2)',
+          background: c.faint,
+          border: `1px solid ${c.glow}`,
+          color: c.text,
+          fontSize: 'var(--fs-xs)',
+          fontWeight: 'var(--fw-bold)',
+          letterSpacing: '1px',
+          textTransform: 'uppercase',
+          padding: '4px 14px',
+          borderRadius: 'var(--radius-full)',
+          marginBottom: 'var(--sp-4)',
+        }}>
+          <span style={{
+            width: 5, height: 5,
+            borderRadius: '50%',
+            background: c.text,
+            display: 'inline-block',
+          }} />
+          Arriving in Phase {phase}
+        </div>
+
+        {/* Title */}
+        <h1 style={{
+          fontFamily: 'var(--font-heading)',
+          fontSize: 'var(--fs-3xl)',
+          fontWeight: 'var(--fw-black)',
+          letterSpacing: '-1.5px',
+          lineHeight: 'var(--lh-tight)',
+          marginBottom: 'var(--sp-4)',
+          background: 'var(--gradient-brand)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}>
+          {title}
+        </h1>
+
+        {/* Description */}
+        <p style={{
+          color: 'var(--text-sub)',
+          fontSize: 'var(--fs-base)',
+          lineHeight: 'var(--lh-relaxed)',
+          marginBottom: features.length > 0 ? 'var(--sp-6)' : 0,
+        }}>
+          {description}
+        </p>
+
+        {/* Feature list */}
+        {features.length > 0 && (
+          <div style={{
+            background: 'var(--card)',
+            border: '1px solid var(--border)',
+            borderRadius: 'var(--radius-lg)',
+            padding: 'var(--sp-5)',
+            textAlign: 'left',
+          }}>
+            <div style={{
+              fontSize: 'var(--fs-xs)',
+              fontWeight: 'var(--fw-bold)',
+              color: c.text,
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: 'var(--sp-4)',
+            }}>
+              Upcoming Features
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {features.map((feature, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--sp-3)',
+                    fontSize: 'var(--fs-sm)',
+                    color: 'var(--text-sub)',
+                    padding: 'var(--sp-2) 0',
+                    borderBottom: i < features.length - 1
+                      ? '1px solid var(--border-muted)'
+                      : 'none',
+                  }}
+                >
+                  <svg
+                    width="8" height="8"
+                    viewBox="0 0 8 8"
+                    fill={c.text}
+                    aria-hidden="true"
+                    style={{ flexShrink: 0, marginTop: 2 }}
+                  >
+                    <path d="M4 0 L8 4 L4 8 L0 4 Z" />
+                  </svg>
+                  {feature}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}

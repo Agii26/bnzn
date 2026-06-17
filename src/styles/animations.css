@@ -1,0 +1,222 @@
+/* =============================================================================
+   BNZN.dev — Keyframe Animation Library
+   Define all @keyframes here. Components apply them via CSS classes or
+   inline animation properties referencing these names.
+   ============================================================================= */
+
+/* ── ENTRY ANIMATIONS ────────────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.90); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.90) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* ── EXIT ANIMATIONS ─────────────────────────────────────────────────────────── */
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes scaleDown {
+  from { opacity: 1; transform: scale(1)    translateY(0);   }
+  to   { opacity: 0; transform: scale(0.96) translateY(8px); }
+}
+
+/* ── PAGE TRANSITIONS ────────────────────────────────────────────────────────── */
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes pageExit {
+  from { opacity: 1; transform: translateX(0);     }
+  to   { opacity: 0; transform: translateX(-20px); }
+}
+
+/* ── CONTINUOUS ANIMATIONS ───────────────────────────────────────────────────── */
+
+/* Live status dot — breathing green glow */
+@keyframes breathe {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0   2px transparent,
+                0 0 0   4px transparent,
+                0 0 8px     var(--green-glow);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0   2px var(--green-faint),
+                0 0 0   6px var(--green-faint),
+                0 0 16px    var(--green-glow);
+  }
+}
+
+/* Story ring gradient rotation */
+@keyframes spinGradient {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Notification pulse ring */
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  70%  { transform: scale(2);   opacity: 0;   }
+  100% { transform: scale(2);   opacity: 0;   }
+}
+
+/* Loading skeleton shimmer */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+
+/* Ticker / marquee scroll (skill market data) */
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Candlestick draw-in — used in Phase 5 career timeline */
+@keyframes drawCandleUp {
+  from { transform: scaleY(0); transform-origin: bottom center; }
+  to   { transform: scaleY(1); transform-origin: bottom center; }
+}
+
+@keyframes drawCandleDown {
+  from { transform: scaleY(0); transform-origin: top center; }
+  to   { transform: scaleY(1); transform-origin: top center; }
+}
+
+/* Number count reveal */
+@keyframes countReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* Subtle float — hero decor elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Gradient shift — brand orb / hero backgrounds */
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* Card hover lift */
+@keyframes cardLift {
+  from { transform: translateY(0);   box-shadow: var(--shadow-sm); }
+  to   { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+}
+
+/* ── UTILITY ANIMATION CLASSES ────────────────────────────────────────────────── */
+
+/* Entry */
+.anim-fade-in    { animation: fadeIn  var(--duration-base) var(--ease-out) both; }
+.anim-fade-up    { animation: fadeUp  var(--duration-slow) var(--ease-out) both; }
+.anim-fade-down  { animation: fadeDown var(--duration-slow) var(--ease-out) both; }
+.anim-fade-left  { animation: fadeLeft var(--duration-slow) var(--ease-out) both; }
+.anim-scale-in   { animation: scaleIn var(--duration-base) var(--ease-spring) both; }
+.anim-scale-up   { animation: scaleUp var(--duration-slow) var(--ease-spring) both; }
+.anim-page-enter { animation: pageEnter var(--duration-slow) var(--ease-out) both; }
+
+/* Stagger delays — add to list items with .anim-fade-up for cascade effect */
+.delay-1  { animation-delay:  50ms; }
+.delay-2  { animation-delay: 100ms; }
+.delay-3  { animation-delay: 150ms; }
+.delay-4  { animation-delay: 200ms; }
+.delay-5  { animation-delay: 250ms; }
+.delay-6  { animation-delay: 300ms; }
+.delay-7  { animation-delay: 350ms; }
+.delay-8  { animation-delay: 400ms; }
+
+/* Continuous */
+.anim-breathe {
+  animation: breathe 2.8s ease-in-out infinite;
+}
+
+.anim-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.anim-ticker {
+  display: inline-flex;
+  animation: tickerScroll 20s linear infinite;
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--card)        0px,
+    var(--card-raised) 200px,
+    var(--card)        400px
+  );
+  background-size: 800px auto;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+/* ── REDUCED MOTION ──────────────────────────────────────────────────────────────
+   When the OS "Reduce Motion" preference is on, strip all decorative animations.
+   Essential transitions (focus rings, hover states) are preserved because they
+   convey state, not motion. The skeleton shimmer is kept but slowed to a fade.
+   ─────────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+  }
+
+  /* Continuous loops would hang on the first frame — just hide them */
+  .anim-breathe,
+  .anim-float,
+  .anim-ticker {
+    animation: none !important;
+  }
+
+  /* Skeleton: swap the sliding shimmer for a static low-contrast surface */
+  .skeleton {
+    animation: none !important;
+    background: var(--card-raised);
+  }
+}

@@ -1,0 +1,205 @@
+import { NavLink } from 'react-router-dom'
+import {
+  Home,
+  User,
+  Compass,
+  Bell,
+  MessageSquare,
+  MoreHorizontal,
+} from 'lucide-react'
+import Avatar from '@/components/ui/Avatar'
+
+const NAV_ITEMS = [
+  { to: '/',              icon: Home,          label: 'Home',          end: true },
+  { to: '/profile',       icon: User,          label: 'Profile'                  },
+  { to: '/explore',       icon: Compass,       label: 'Explore'                  },
+  { to: '/notifications', icon: Bell,          label: 'Notifications'            },
+  { to: '/contact',       icon: MessageSquare, label: 'Contact'                  },
+]
+
+export default function Sidebar() {
+  return (
+    <aside className="app-sidebar">
+
+      {/* ── Brand / Logo ── */}
+      <div style={{
+        padding: 'var(--sp-6) var(--sp-5) var(--sp-5)',
+        borderBottom: '1px solid var(--border)',
+        flexShrink: 0,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+
+          {/* Logo mark */}
+          <div style={{
+            width: 42, height: 42,
+            background: 'var(--gradient-brand)',
+            borderRadius: 14,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: 'var(--font-heading)',
+            fontSize: 22,
+            fontWeight: 'var(--fw-black)',
+            color: 'white',
+            flexShrink: 0,
+            boxShadow: '0 2px 16px var(--purple-glow)',
+          }}>
+            B
+          </div>
+
+          {/* Wordmark */}
+          <div>
+            <div style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'var(--fs-lg)',
+              fontWeight: 'var(--fw-black)',
+              letterSpacing: '-0.6px',
+              lineHeight: 'var(--lh-none)',
+            }}>
+              BNZN
+              <span style={{ color: 'var(--purple)', fontWeight: 'var(--fw-bold)' }}>.dev</span>
+            </div>
+            <div style={{
+              fontSize: 'var(--fs-xs)',
+              color: 'var(--text-muted)',
+              marginTop: 3,
+              letterSpacing: '0.2px',
+            }}>
+              portfolio
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Navigation ── */}
+      <nav
+        role="navigation"
+        aria-label="Main navigation"
+        style={{ padding: 'var(--sp-3) 0', flex: 1 }}
+      >
+        {NAV_ITEMS.map(({ to, icon: Icon, label, end }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={end}
+            className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
+          >
+            {({ isActive }) => (
+              <>
+                <Icon
+                  size={18}
+                  strokeWidth={isActive ? 2.5 : 1.8}
+                  aria-hidden="true"
+                />
+                <span>{label}</span>
+              </>
+            )}
+          </NavLink>
+        ))}
+      </nav>
+
+      {/* ── Bottom: phase status + profile row ── */}
+      <div style={{
+        padding: 'var(--sp-3) var(--sp-3) var(--sp-4)',
+        borderTop: '1px solid var(--border)',
+        flexShrink: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--sp-2)',
+      }}>
+
+        {/* Phase status pill */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--sp-2)',
+          background: 'var(--surf)',
+          border: '1px solid var(--border)',
+          borderRadius: 'var(--radius-md)',
+          padding: 'var(--sp-2) var(--sp-3)',
+        }}>
+          <div
+            className="anim-breathe"
+            style={{
+              width: 7, height: 7,
+              borderRadius: '50%',
+              background: 'var(--green)',
+              flexShrink: 0,
+            }}
+          />
+          <div style={{ minWidth: 0 }}>
+            <div style={{
+              fontSize: 'var(--fs-xs)',
+              fontWeight: 'var(--fw-semibold)',
+              color: 'var(--green)',
+              lineHeight: 1,
+            }}>
+              Phase 1 — Design System
+            </div>
+            <div style={{
+              fontSize: 'var(--fs-2xs)',
+              color: 'var(--text-muted)',
+              marginTop: 2,
+            }}>
+              In progress
+            </div>
+          </div>
+        </div>
+
+        {/* Profile row — real button so keyboard + screen reader users can activate it */}
+        <button
+          type="button"
+          aria-label="Profile options"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--sp-3)',
+            padding: 'var(--sp-2) var(--sp-2)',
+            borderRadius: 'var(--radius-md)',
+            minHeight: 44,
+            width: '100%',
+            cursor: 'pointer',
+            transition: 'background var(--transition-fast)',
+            background: 'transparent',
+            border: 'none',
+            textAlign: 'left',
+          }}
+          onMouseEnter={e => e.currentTarget.style.background = 'var(--surf)'}
+          onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+          onFocus={e => e.currentTarget.style.background = 'var(--surf)'}
+          onBlur={e => e.currentTarget.style.background = 'transparent'}
+        >
+          <Avatar name="Benzon" size="sm" status="online" />
+
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{
+              fontSize: 'var(--fs-sm)',
+              fontWeight: 'var(--fw-semibold)',
+              color: 'var(--text)',
+              lineHeight: 1,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}>
+              Benzon
+            </div>
+            <div style={{
+              fontSize: 'var(--fs-xs)',
+              color: 'var(--text-muted)',
+              marginTop: 2,
+            }}>
+              @benzon
+            </div>
+          </div>
+
+          <MoreHorizontal
+            size={16}
+            aria-hidden="true"
+            style={{ color: 'var(--text-muted)', flexShrink: 0 }}
+          />
+        </button>
+      </div>
+
+    </aside>
+  )
+}
