@@ -105,130 +105,100 @@ input, textarea, select {
   border-radius: var(--radius-sm);
 }
 
-/* ── APP SHELL LAYOUT ────────────────────────────────────────────────────────── */
+/* =============================================================================
+   BNZN.dev — Phase 2 global.css additions
+   Append these rules to the existing src/styles/global.css
+   ============================================================================= */
 
+/* ── APP SHELL — PHASE 2 LAYOUT ─────────────────────────────────────────────── */
+
+/* Override Phase 0 .app-shell — now a 3-column flex layout */
 .app-shell {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
+  display:    flex;
+  height:     100vh;
+  overflow:   hidden;
   background: var(--bg);
 }
 
-.app-sidebar {
-  width: var(--sidebar-width);
-  height: 100vh;
-  flex-shrink: 0;
-  border-right: 1px solid var(--border);
-  display: flex;
+/* Center column: vertical flex, Header on top, main scrolls below */
+.app-center {
+  flex:        1;
+  min-width:   0;
+  display:     flex;
   flex-direction: column;
+  height:      100vh;
+  overflow:    hidden;
+}
+
+/* The scrollable page content area (inside .app-center, below Header) */
+.app-main {
+  flex:      1;
+  min-width: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  background: var(--bg);
-  position: sticky;
-  top: 0;
-  z-index: var(--z-sticky);
+  height:    100%;
 }
 
-.app-main {
-  flex: 1;
-  min-width: 0;
-  height: 100vh;
-  overflow-y: auto;
+/* Right panel wrapper — CSS-only responsive show/hide */
+.app-right-panel {
+  display: none; /* hidden by default — shown at ≥1024px below */
 }
 
-/* ── SIDEBAR NAV ITEMS ───────────────────────────────────────────────────────── */
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4);
-  margin: 2px var(--sp-3);
-  border-radius: var(--radius-md);
-  color: var(--text-muted);
-  font-size: var(--fs-base);
-  font-weight: var(--fw-medium);
-  text-decoration: none;
-  transition: background var(--transition-fast), color var(--transition-fast),
-              box-shadow var(--transition-fast);
-  position: relative;
+/* Spacer prevents content hiding behind BottomNav on mobile */
+.bottom-nav-spacer {
+  display: none;
 }
 
-.nav-item:hover {
-  color: var(--text-sub);
-  background: var(--surf);
-  text-decoration: none;
+/* ── HEADER SEARCH RESPONSIVE ───────────────────────────────────────────────── */
+
+/* Hide search input below 520px */
+.header-search {
+  display: none;
 }
 
-.nav-item.active {
-  color: var(--purple);
-  background: var(--purple-faint);
-  font-weight: var(--fw-semibold);
-  /* Inset left-edge indicator — no pseudo-element clipping issues */
-  box-shadow: inset 3px 0 0 var(--purple);
+/* ── RESPONSIVE OVERRIDES ────────────────────────────────────────────────────── */
+
+/* Tablet: sidebar + center, no right panel */
+@media (min-width: 769px) {
+  .app-sidebar { display: flex; } /* re-show (was display:none from Phase 0 ≤768px rule) */
 }
 
-/* ── UTILITY: GRADIENT TEXT ──────────────────────────────────────────────────── */
-
-.text-gradient {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Show search at 520px+ */
+@media (min-width: 520px) {
+  .header-search { display: block; }
 }
 
-.text-gradient-rp {
-  background: var(--gradient-red-purple);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Desktop: add right panel column */
+@media (min-width: 1024px) {
+  .app-right-panel { display: block; }
 }
 
-/* ── UTILITY: PAGE CONTENT CENTERING ─────────────────────────────────────────── */
-
-.page-content {
-  max-width: var(--feed-max-width);
-  margin: 0 auto;
-  padding: var(--sp-6);
-}
-
-.page-content-wide {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: var(--sp-6);
-}
-
-/* ── UTILITY: VISUALLY HIDDEN (accessibility) ────────────────────────────────── */
-
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* ── RESPONSIVE ──────────────────────────────────────────────────────────────── */
-
+/* Mobile overrides */
 @media (max-width: 768px) {
   body { overflow: auto; }
 
   .app-shell {
     flex-direction: column;
-    height: auto;
-    min-height: 100dvh;
+    height:         auto;
+    min-height:     100dvh;
   }
 
-  /* Sidebar hidden on mobile — bottom nav replaces it (Phase 2) */
-  .app-sidebar {
-    display: none;
+  .app-sidebar { display: none; }
+
+  .app-center {
+    height:     auto;
+    min-height: 100dvh;
+    overflow:   unset;
   }
 
   .app-main {
-    height: auto;
-    min-height: 100dvh;
+    height:    auto;
     overflow-y: unset;
+  }
+
+  /* Push content above the 56px BottomNav + safe area */
+  .bottom-nav-spacer {
+    display: block;
+    height:  calc(56px + env(safe-area-inset-bottom));
   }
 }

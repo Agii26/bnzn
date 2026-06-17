@@ -15,19 +15,19 @@ import Contact from '@/pages/Contact'
  * /notifications   → Achievements feed
  * /contact         → DM-style contact
  *
- * All routes share AppShell as their layout wrapper.
- * Add new routes as children of the root '/' path.
+ * Each child route carries a `handle.title` so the Header can read the
+ * active page name without prop drilling via useMatches().
  */
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppShell />,
     children: [
-      { index: true,                 element: <Home />          },
-      { path: 'profile',             element: <Profile />       },
-      { path: 'explore',             element: <Explore />       },
-      { path: 'notifications',       element: <Notifications /> },
-      { path: 'contact',             element: <Contact />       },
+      { index: true,           element: <Home />,          handle: { title: 'Feed' }          },
+      { path: 'profile',       element: <Profile />,       handle: { title: 'Profile' }       },
+      { path: 'explore',       element: <Explore />,       handle: { title: 'Explore' }       },
+      { path: 'notifications', element: <Notifications />, handle: { title: 'Notifications' } },
+      { path: 'contact',       element: <Contact />,       handle: { title: 'Contact' }       },
     ],
   },
 ])

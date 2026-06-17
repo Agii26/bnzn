@@ -69,8 +69,22 @@ const STATUS_STYLES = {
 
 // ── Story ring ────────────────────────────────────────────────────────────────
 function StoryRing({ label, Icon, gradient, active }) {
+  function handleActivate() {
+    // Phase 3: opens domain story / filter
+  }
+
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label={`${label} stories`}
+      onClick={handleActivate}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          handleActivate()
+        }
+      }}
       style={{
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', gap: 6,
