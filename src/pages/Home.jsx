@@ -389,29 +389,6 @@ export default function Home() {
   return (
     <div className="anim-page-enter" style={{ minHeight: '100vh' }}>
 
-      {/* ── Sticky header ── */}
-      <div style={{
-        position: 'sticky', top: 0,
-        zIndex: 'var(--z-sticky)',
-        background: 'rgba(8, 8, 14, 0.82)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '1px solid var(--border)',
-        padding: 'var(--sp-4) var(--sp-6)',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
-        <h1 style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: 'var(--fs-xl)',
-          fontWeight: 'var(--fw-black)',
-          letterSpacing: '-0.5px',
-          margin: 0,
-        }}>
-          Feed
-        </h1>
-        <Badge variant="glow" color="purple" size="sm" dot>Phase 3 Preview</Badge>
-      </div>
-
       {/* ── Feed content ── */}
       <div className="page-content">
 

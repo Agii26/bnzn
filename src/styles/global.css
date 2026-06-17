@@ -105,14 +105,9 @@ input, textarea, select {
   border-radius: var(--radius-sm);
 }
 
-/* =============================================================================
-   BNZN.dev — Phase 2 global.css additions
-   Append these rules to the existing src/styles/global.css
-   ============================================================================= */
+/* ── APP SHELL LAYOUT ────────────────────────────────────────────────────────── */
 
-/* ── APP SHELL — PHASE 2 LAYOUT ─────────────────────────────────────────────── */
-
-/* Override Phase 0 .app-shell — now a 3-column flex layout */
+/* Phase 2: 3-column flex layout — Sidebar | Center | RightPanel */
 .app-shell {
   display:    flex;
   height:     100vh;
@@ -120,60 +115,151 @@ input, textarea, select {
   background: var(--bg);
 }
 
-/* Center column: vertical flex, Header on top, main scrolls below */
-.app-center {
-  flex:        1;
-  min-width:   0;
-  display:     flex;
+/* Sidebar — left column */
+.app-sidebar {
+  width:        var(--sidebar-width);
+  height:       100vh;
+  flex-shrink:  0;
+  border-right: 1px solid var(--border);
+  display:      flex;
   flex-direction: column;
-  height:      100vh;
-  overflow:    hidden;
+  overflow-y:   auto;
+  overflow-x:   hidden;
+  background:   var(--bg);
+  position:     sticky;
+  top:          0;
+  z-index:      var(--z-sticky);
+  transition:   width var(--transition-base);
 }
 
-/* The scrollable page content area (inside .app-center, below Header) */
+/* Center column — Header on top, scrollable main below */
+.app-center {
+  flex:           1;
+  min-width:      0;
+  display:        flex;
+  flex-direction: column;
+  height:         100vh;
+  overflow:       hidden;
+}
+
+/* Scrollable page area */
 .app-main {
-  flex:      1;
-  min-width: 0;
+  flex:       1;
+  min-width:  0;
   overflow-y: auto;
   overflow-x: hidden;
-  height:    100%;
+  height:     100%;
 }
 
-/* Right panel wrapper — CSS-only responsive show/hide */
+/* Right panel — desktop only, shown via media query below */
 .app-right-panel {
-  display: none; /* hidden by default — shown at ≥1024px below */
+  display: none;
 }
 
-/* Spacer prevents content hiding behind BottomNav on mobile */
+/* Spacer so content clears the mobile BottomNav */
 .bottom-nav-spacer {
   display: none;
 }
 
+/* ── SIDEBAR NAV ITEMS ───────────────────────────────────────────────────────── */
+
+.nav-item {
+  display:        flex;
+  align-items:    center;
+  gap:            var(--sp-3);
+  padding:        var(--sp-3) var(--sp-4);
+  margin:         2px var(--sp-3);
+  border-radius:  var(--radius-md);
+  color:          var(--text-muted);
+  font-size:      var(--fs-base);
+  font-weight:    var(--fw-medium);
+  text-decoration: none;
+  transition:     background var(--transition-fast), color var(--transition-fast),
+                  box-shadow var(--transition-fast);
+  position:       relative;
+}
+
+.nav-item:hover {
+  color:           var(--text-sub);
+  background:      var(--surf);
+  text-decoration: none;
+}
+
+.nav-item.active {
+  color:       var(--purple);
+  background:  var(--purple-faint);
+  font-weight: var(--fw-semibold);
+  /* Inset left-edge indicator */
+  box-shadow:  inset 3px 0 0 var(--purple);
+}
+
 /* ── HEADER SEARCH RESPONSIVE ───────────────────────────────────────────────── */
 
-/* Hide search input below 520px */
+/* Hidden on narrow screens, shown ≥520px */
 .header-search {
   display: none;
 }
 
-/* ── RESPONSIVE OVERRIDES ────────────────────────────────────────────────────── */
+/* ── UTILITY: GRADIENT TEXT ──────────────────────────────────────────────────── */
 
-/* Tablet: sidebar + center, no right panel */
-@media (min-width: 769px) {
-  .app-sidebar { display: flex; } /* re-show (was display:none from Phase 0 ≤768px rule) */
+.text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Show search at 520px+ */
+.text-gradient-rp {
+  background: var(--gradient-red-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── UTILITY: PAGE CONTENT CENTERING ─────────────────────────────────────────── */
+
+.page-content {
+  max-width: var(--feed-max-width);
+  margin:    0 auto;
+  padding:   var(--sp-6);
+}
+
+.page-content-wide {
+  max-width: 800px;
+  margin:    0 auto;
+  padding:   var(--sp-6);
+}
+
+/* ── UTILITY: VISUALLY HIDDEN (accessibility) ────────────────────────────────── */
+
+.sr-only {
+  position:   absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow:   hidden;
+  clip:       rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────────── */
+
+/* Show search bar at 520px+ */
 @media (min-width: 520px) {
   .header-search { display: block; }
 }
 
-/* Desktop: add right panel column */
+/* Tablet: sidebar visible, no right panel */
+@media (min-width: 769px) {
+  .app-sidebar { display: flex; }
+}
+
+/* Desktop: right panel visible */
 @media (min-width: 1024px) {
   .app-right-panel { display: block; }
 }
 
-/* Mobile overrides */
+/* Mobile */
 @media (max-width: 768px) {
   body { overflow: auto; }
 
@@ -192,11 +278,11 @@ input, textarea, select {
   }
 
   .app-main {
-    height:    auto;
+    height:     auto;
     overflow-y: unset;
   }
 
-  /* Push content above the 56px BottomNav + safe area */
+  /* Push scroll content above fixed BottomNav */
   .bottom-nav-spacer {
     display: block;
     height:  calc(56px + env(safe-area-inset-bottom));
