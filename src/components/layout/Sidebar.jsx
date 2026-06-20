@@ -216,7 +216,7 @@ export default function Sidebar() {
                 color:      'var(--purple)',
                 lineHeight: 1,
               }}>
-                Phase 2 — App Shell
+                Phase 3 — Profile + Feed
               </div>
               <div style={{
                 fontSize:  'var(--fs-2xs)',

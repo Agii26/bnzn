@@ -1,18 +1,15 @@
 import { useState } from 'react'
 import {
-  Heart,
-  Share2,
-  Bookmark,
   Code2,
   TrendingUp,
   Layers,
   BookOpen,
   Lock,
-  Github,
-  ExternalLink,
   ArrowRight,
 } from 'lucide-react'
-import { Avatar, Badge, Button, Divider, Modal, Tooltip } from '@/components/ui'
+import { Badge, Button, Divider, Modal } from '@/components/ui'
+import PostCard from '@/components/feed/PostCard'
+import projects from '@/data/projects.json'
 
 // ── Story highlight rings ──────────────────────────────────────────────────────
 const STORIES = [
@@ -22,40 +19,12 @@ const STORIES = [
   { label: 'Blog',    Icon: BookOpen,    gradient: 'var(--gradient-brand)',        active: false },
 ]
 
-// ── Mock feed posts ────────────────────────────────────────────────────────────
-const MOCK_POSTS = [
-  {
-    id: 1,
-    title: 'TradeDesk v2',
-    description:
-      'React + Vite crypto trading dashboard with 10-criterion confluence scoring engine and real-time candlestick charts.',
-    tags: ['React', 'Vite', 'Crypto', 'Express'],
-    headerGradient: 'linear-gradient(135deg, #F43F5E 0%, #A855F7 100%)',
-    stats: { likes: 24, shares: 8, bookmarks: 12 },
-    domain: 'dev',
-    date: 'May 2026',
-    featured: true,
-  },
-  {
-    id: 2,
-    title: 'Geospatial Farm Monitor',
-    description:
-      'Government IT internship — Django + Leaflet + PostgreSQL geospatial monitoring system for the Provincial IT Office of Bulacan.',
-    tags: ['Django', 'PostgreSQL', 'Leaflet', 'Python'],
-    headerGradient: 'linear-gradient(135deg, #3B82F6 0%, #A855F7 100%)',
-    stats: { likes: 31, shares: 5, bookmarks: 18 },
-    domain: 'dev',
-    date: 'Jun 2025',
-    featured: false,
-  },
-]
-
 // ── Build progress (mirrors the Obsidian Build Log) ─────────────────────────────
 const BUILD_PHASES = [
   { phase: 0, name: 'Foundation',          status: 'done'   },
   { phase: 1, name: 'Design System',       status: 'done'   },
-  { phase: 2, name: 'App Shell',           status: 'next'   },
-  { phase: 3, name: 'Profile + Feed',      status: 'locked' },
+  { phase: 2, name: 'App Shell',           status: 'done'   },
+  { phase: 3, name: 'Profile + Feed',      status: 'next'   },
   { phase: 4, name: 'Explore + Contact',   status: 'locked' },
   { phase: 5, name: 'Innovation Layer',    status: 'locked' },
   { phase: 6, name: 'Polish + Deploy',     status: 'locked' },
@@ -70,7 +39,7 @@ const STATUS_STYLES = {
 // ── Story ring ────────────────────────────────────────────────────────────────
 function StoryRing({ label, Icon, gradient, active }) {
   function handleActivate() {
-    // Phase 3: opens domain story / filter
+    // Phase 5: opens domain story / filter
   }
 
   return (
@@ -91,7 +60,6 @@ function StoryRing({ label, Icon, gradient, active }) {
         cursor: 'pointer', flexShrink: 0,
       }}
     >
-      {/* Gradient ring border */}
       <div
         style={{
           width: 60, height: 60, borderRadius: '50%',
@@ -127,261 +95,6 @@ function StoryRing({ label, Icon, gradient, active }) {
   )
 }
 
-// ── Post card ─────────────────────────────────────────────────────────────────
-function PostCard({ post, index }) {
-  const ACTION_BUTTONS = [
-    { Icon: Heart,    count: post.stats.likes,     label: 'Like',     hoverColor: 'var(--red)'    },
-    { Icon: Share2,   count: post.stats.shares,    label: 'Share',    hoverColor: 'var(--blue)'   },
-    { Icon: Bookmark, count: post.stats.bookmarks, label: 'Bookmark', hoverColor: 'var(--purple)' },
-  ]
-
-  return (
-    <div
-      className={`anim-fade-up delay-${index + 2}`}
-      style={{
-        background: 'var(--card)',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius-xl)',
-        overflow: 'hidden',
-        transition: 'border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base)',
-      }}
-      onMouseEnter={e => {
-        e.currentTarget.style.borderColor = 'var(--border-bright)'
-        e.currentTarget.style.transform   = 'translateY(-2px)'
-        e.currentTarget.style.boxShadow   = 'var(--shadow-md)'
-      }}
-      onMouseLeave={e => {
-        e.currentTarget.style.borderColor = 'var(--border)'
-        e.currentTarget.style.transform   = 'translateY(0)'
-        e.currentTarget.style.boxShadow   = 'none'
-      }}
-    >
-      {/* ── Screenshot header ── */}
-      <div style={{
-        height: 164,
-        background: post.headerGradient,
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        {/* Dot-grid texture */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)',
-          backgroundSize: '22px 22px',
-        }} />
-
-        {/* Center label */}
-        <div style={{
-          background: 'rgba(0,0,0,0.35)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,0.12)',
-          borderRadius: 'var(--radius-full)',
-          padding: '7px 18px',
-          fontSize: 'var(--fs-xs)',
-          fontWeight: 'var(--fw-semibold)',
-          color: 'rgba(255,255,255,0.8)',
-          display: 'flex', alignItems: 'center', gap: 'var(--sp-2)',
-          position: 'relative',
-          zIndex: 1,
-        }}>
-          <Code2 size={12} aria-hidden="true" />
-          Screenshot in Phase 3
-        </div>
-
-        {/* Top-right badges */}
-        <div style={{
-          position: 'absolute', top: 12, right: 12,
-          display: 'flex', gap: 'var(--sp-2)',
-          zIndex: 1,
-        }}>
-          {post.featured && (
-            <div style={{
-              background: 'rgba(244,63,94,0.85)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: 'var(--radius-full)',
-              padding: '3px 10px',
-              fontSize: 'var(--fs-2xs)',
-              fontWeight: 'var(--fw-black)',
-              color: 'white',
-              textTransform: 'uppercase',
-              letterSpacing: '0.8px',
-            }}>
-              Featured
-            </div>
-          )}
-          <div style={{
-            background: 'rgba(0,0,0,0.5)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: 'var(--radius-full)',
-            padding: '3px 10px',
-            fontSize: 'var(--fs-2xs)',
-            fontWeight: 'var(--fw-bold)',
-            color: 'var(--blue-light)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.8px',
-          }}>
-            {post.domain}
-          </div>
-        </div>
-
-        {/* Top-left action buttons */}
-        <div style={{
-          position: 'absolute', top: 12, left: 12,
-          display: 'flex', gap: 8,
-          zIndex: 1,
-        }}>
-          {[
-            { Icon: Github,       label: 'GitHub' },
-            { Icon: ExternalLink, label: 'Live Demo' },
-          ].map(({ Icon, label }) => (
-            <button
-              key={label}
-              aria-label={label}
-              style={{
-                width: 36, height: 36,
-                borderRadius: '50%',
-                background: 'rgba(0,0,0,0.5)',
-                backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'rgba(255,255,255,0.7)',
-                transition: 'all var(--transition-fast)',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.2)'
-                e.currentTarget.style.color = 'white'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = 'rgba(0,0,0,0.5)'
-                e.currentTarget.style.color = 'rgba(255,255,255,0.7)'
-              }}
-            >
-              <Icon size={14} aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Post body ── */}
-      <div style={{ padding: 'var(--sp-4)' }}>
-
-        {/* Author row */}
-        <div style={{
-          display: 'flex', alignItems: 'center',
-          gap: 'var(--sp-3)', marginBottom: 'var(--sp-3)',
-        }}>
-          <Avatar name="Benzon" size="sm" status="online" />
-          <div>
-            <div style={{
-              fontSize: 'var(--fs-sm)',
-              fontWeight: 'var(--fw-semibold)',
-              color: 'var(--text)',
-              display: 'flex', alignItems: 'center', gap: 6,
-            }}>
-              Benzon
-              {/* Domain verification badge */}
-              <span style={{
-                background: 'var(--blue-faint)',
-                border: '1px solid var(--blue-glow)',
-                color: 'var(--blue)',
-                fontSize: 'var(--fs-2xs)',
-                fontWeight: 'var(--fw-black)',
-                padding: '1px 5px',
-                borderRadius: 3,
-                fontFamily: 'var(--font-mono)',
-                letterSpacing: '0.5px',
-              }}>
-                DEV
-              </span>
-            </div>
-            <div style={{
-              fontSize: 'var(--fs-xs)',
-              color: 'var(--text-muted)',
-              marginTop: 2,
-            }}>
-              @benzon · {post.date}
-            </div>
-          </div>
-        </div>
-
-        {/* Title */}
-        <div style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: 'var(--fs-xl)',
-          fontWeight: 'var(--fw-bold)',
-          color: 'var(--text)',
-          letterSpacing: '-0.4px',
-          marginBottom: 'var(--sp-2)',
-        }}>
-          {post.title}
-        </div>
-
-        {/* Description */}
-        <p style={{
-          fontSize: 'var(--fs-sm)',
-          color: 'var(--text-sub)',
-          lineHeight: 'var(--lh-normal)',
-          marginBottom: 'var(--sp-4)',
-        }}>
-          {post.description}
-        </p>
-
-        {/* Tech tag pills */}
-        <div style={{
-          display: 'flex', flexWrap: 'wrap', gap: 6,
-          marginBottom: 'var(--sp-4)',
-        }}>
-          {post.tags.map(tag => (
-            <Badge key={tag} variant="outline" color="purple" size="sm">{tag}</Badge>
-          ))}
-        </div>
-
-        {/* Action bar — each button gets a Tooltip label on hover/focus */}
-        <div style={{
-          display: 'flex', alignItems: 'center',
-          borderTop: '1px solid var(--border-muted)',
-          paddingTop: 'var(--sp-3)',
-        }}>
-          {ACTION_BUTTONS.map(({ Icon, count, label, hoverColor }) => (
-            <Tooltip key={label} content={label} position="top">
-              <button
-                aria-label={`${label}: ${count}`}
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  gap: 6,
-                  flex: 1,
-                  minHeight: 44,
-                  color: 'var(--text-muted)',
-                  fontSize: 'var(--fs-xs)',
-                  fontWeight: 'var(--fw-medium)',
-                  padding: 'var(--sp-3)',
-                  borderRadius: 'var(--radius-sm)',
-                  transition: 'color var(--transition-fast), background var(--transition-fast)',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.color      = hoverColor
-                  e.currentTarget.style.background = 'var(--surf)'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.color      = 'var(--text-muted)'
-                  e.currentTarget.style.background = 'transparent'
-                }}
-              >
-                <Icon size={14} strokeWidth={1.8} aria-hidden="true" />
-                <span>{count}</span>
-              </button>
-            </Tooltip>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   const [buildLogOpen, setBuildLogOpen] = useState(false)
@@ -403,10 +116,10 @@ export default function Home() {
           {STORIES.map(story => <StoryRing key={story.label} {...story} />)}
         </div>
 
-        {/* Post cards */}
+        {/* Post cards — driven by data/projects.json */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-          {MOCK_POSTS.map((post, i) => (
-            <PostCard key={post.id} post={post} index={i} />
+          {projects.map((post, i) => (
+            <PostCard key={post.id} post={post} index={i} pinned={post.pinned} />
           ))}
 
           {/* Section divider — separates real posts from the roadmap teaser */}
@@ -442,14 +155,14 @@ export default function Home() {
                 color: 'var(--text)',
                 marginBottom: 6,
               }}>
-                Full feed arrives in Phase 3
+                Discovery tools arrive in Phase 4
               </div>
               <div style={{
                 fontSize: 'var(--fs-sm)',
                 color: 'var(--text-muted)',
                 lineHeight: 'var(--lh-relaxed)',
               }}>
-                Infinite scroll · Project cards · Trading showcases · Milestones
+                Tag filters · Skill market widget · Search across posts
               </div>
             </div>
             <Button

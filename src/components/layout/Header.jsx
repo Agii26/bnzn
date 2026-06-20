@@ -1,6 +1,6 @@
-import { useMatches } from 'react-router-dom'
+import { useMatches, useNavigate } from 'react-router-dom'
 import { Search, Bell } from 'lucide-react'
-import { Input, Avatar, Badge } from '@/components/ui'
+import { Input, Avatar } from '@/components/ui'
 
 /**
  * Header — Phase 2 component
@@ -13,6 +13,7 @@ import { Input, Avatar, Badge } from '@/components/ui'
  */
 export default function Header() {
   const matches = useMatches()
+  const navigate = useNavigate()
   const activeTitle = matches
     .filter(m => m.handle?.title)
     .map(m => m.handle.title)
@@ -120,10 +121,11 @@ export default function Header() {
           )}
         </div>
 
-        {/* Avatar — opens profile menu (Phase 3) */}
+        {/* Avatar — links to Profile (Phase 3) */}
         <button
           type="button"
-          aria-label="Profile menu"
+          aria-label="View your profile"
+          onClick={() => navigate('/profile')}
           style={{
             padding:      0,
             borderRadius: '50%',
