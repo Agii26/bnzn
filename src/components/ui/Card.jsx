@@ -33,7 +33,7 @@ export default function Card({
 
   const applyHover = e => {
     e.currentTarget.style.transform   = 'translateY(-3px)'
-    e.currentTarget.style.boxShadow   = 'var(--shadow-md), var(--glow-purple)'
+    e.currentTarget.style.boxShadow   = 'var(--shadow-md)'
     e.currentTarget.style.borderColor = 'var(--border-bright)'
   }
   const clearHover = e => {

@@ -5,7 +5,6 @@ export default function Notifications() {
   return (
     <PagePlaceholder
       icon={Bell}
-      color="red"
       title="Notifications"
       phase={4}
       description="Activity feed for portfolio interactions — project views, skill endorsements, and live build log updates."

@@ -1,12 +1,52 @@
 [
-  { "name": "React",       "domain": "dev", "level": 90, "color": "blue"   },
-  { "name": "JavaScript",  "domain": "dev", "level": 88, "color": "blue"   },
-  { "name": "Python",      "domain": "dev", "level": 82, "color": "green"  },
-  { "name": "Vite",        "domain": "dev", "level": 80, "color": "purple" },
-  { "name": "Django",      "domain": "dev", "level": 75, "color": "green"  },
-  { "name": "PostgreSQL",  "domain": "dev", "level": 72, "color": "blue"   },
-  { "name": "Node.js",     "domain": "dev", "level": 70, "color": "green"  },
-  { "name": "TypeScript",  "domain": "dev", "level": 65, "color": "blue"   },
-  { "name": "Zustand",     "domain": "dev", "level": 78, "color": "purple" },
-  { "name": "Leaflet",     "domain": "dev", "level": 68, "color": "green"  }
+  {
+    "name": "React",
+    "domain": "dev",
+    "level": 90
+  },
+  {
+    "name": "JavaScript",
+    "domain": "dev",
+    "level": 88
+  },
+  {
+    "name": "Python",
+    "domain": "dev",
+    "level": 82
+  },
+  {
+    "name": "Vite",
+    "domain": "dev",
+    "level": 80
+  },
+  {
+    "name": "Django",
+    "domain": "dev",
+    "level": 75
+  },
+  {
+    "name": "PostgreSQL",
+    "domain": "dev",
+    "level": 72
+  },
+  {
+    "name": "Node.js",
+    "domain": "dev",
+    "level": 70
+  },
+  {
+    "name": "TypeScript",
+    "domain": "dev",
+    "level": 65
+  },
+  {
+    "name": "Zustand",
+    "domain": "dev",
+    "level": 78
+  },
+  {
+    "name": "Leaflet",
+    "domain": "dev",
+    "level": 68
+  }
 ]

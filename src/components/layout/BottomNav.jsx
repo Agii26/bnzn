@@ -59,7 +59,7 @@ export default function BottomNav() {
                 justifyContent: 'center',
                 gap:            3,
                 height:         '100%',
-                color:          isActive ? 'var(--purple)' : 'var(--text-muted)',
+                color:          isActive ? 'var(--amber)' : 'var(--text-muted)',
                 transition:     'color var(--transition-fast)',
                 position:       'relative',
               }}
@@ -75,7 +75,7 @@ export default function BottomNav() {
                     right:        '20%',
                     height:       2,
                     borderRadius: '0 0 2px 2px',
-                    background:   'var(--purple)',
+                    background:   'var(--amber)',
                   }}
                 />
               )}

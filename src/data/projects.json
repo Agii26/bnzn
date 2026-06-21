@@ -3,9 +3,17 @@
     "id": "tradedesk-v2",
     "title": "TradeDesk v2",
     "description": "React + Vite crypto trading dashboard with a 10-criterion confluence scoring engine and real-time candlestick charts.",
-    "tags": ["React", "Vite", "Express", "Crypto"],
-    "headerGradient": "linear-gradient(135deg, #F43F5E 0%, #A855F7 100%)",
-    "stats": { "likes": 24, "shares": 8, "bookmarks": 12 },
+    "tags": [
+      "React",
+      "Vite",
+      "Express",
+      "Crypto"
+    ],
+    "stats": {
+      "likes": 24,
+      "shares": 8,
+      "bookmarks": 12
+    },
     "domain": "dev",
     "date": "May 2026",
     "featured": true,
@@ -16,10 +24,18 @@
   {
     "id": "farm-monitor",
     "title": "Geospatial Farm Monitor",
-    "description": "Government IT internship — Django + Leaflet + PostgreSQL geospatial monitoring system for the Provincial IT Office of Bulacan.",
-    "tags": ["Django", "PostgreSQL", "Leaflet", "Python"],
-    "headerGradient": "linear-gradient(135deg, #3B82F6 0%, #A855F7 100%)",
-    "stats": { "likes": 31, "shares": 5, "bookmarks": 18 },
+    "description": "Government IT internship \u2014 Django + Leaflet + PostgreSQL geospatial monitoring system for the Provincial IT Office of Bulacan.",
+    "tags": [
+      "Django",
+      "PostgreSQL",
+      "Leaflet",
+      "Python"
+    ],
+    "stats": {
+      "likes": 31,
+      "shares": 5,
+      "bookmarks": 18
+    },
     "domain": "dev",
     "date": "Jun 2025",
     "featured": false,
@@ -30,10 +46,18 @@
   {
     "id": "bnzn-dev",
     "title": "BNZN.dev",
-    "description": "This site. A 7-phase, session-logged build of a social-media-style developer portfolio — React, Vite, Zustand, and a hand-built design system.",
-    "tags": ["React", "Vite", "Zustand", "Framer Motion"],
-    "headerGradient": "linear-gradient(135deg, #A855F7 0%, #3B82F6 100%)",
-    "stats": { "likes": 17, "shares": 6, "bookmarks": 9 },
+    "description": "This site. A 7-phase, session-logged build of a social-media-style developer portfolio \u2014 React, Vite, Zustand, and a hand-built design system.",
+    "tags": [
+      "React",
+      "Vite",
+      "Zustand",
+      "Framer Motion"
+    ],
+    "stats": {
+      "likes": 17,
+      "shares": 6,
+      "bookmarks": 9
+    },
     "domain": "dev",
     "date": "Jun 2026",
     "featured": false,

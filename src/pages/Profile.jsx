@@ -22,9 +22,9 @@ import timeline from '@/data/timeline.json'
 const TIMELINE_ICONS = { Sparkles, Rocket, Briefcase }
 
 const DOMAIN_BADGES = [
-  { label: 'Dev',      color: 'blue',   variant: 'solid'   },
-  { label: 'Trading',  color: 'green',  variant: 'outline' },
-  { label: 'Design',   color: 'purple', variant: 'outline' },
+  { label: 'Dev',      color: 'amber', variant: 'solid'   },
+  { label: 'Trading',  color: 'gray',  variant: 'outline' },
+  { label: 'Design',   color: 'gray',  variant: 'outline' },
 ]
 
 const TABS = [
@@ -71,10 +71,7 @@ function Stat({ value, label }) {
   )
 }
 
-function HighlightRing({ title, date, icon: Icon, color }) {
-  const colorVar = `var(--${color})`
-  const glowVar = `var(--${color}-glow)`
-
+function HighlightRing({ title, date, icon: Icon }) {
   return (
     <Tooltip content={`${title} — ${date}`} position="bottom">
       <div
@@ -95,23 +92,21 @@ function HighlightRing({ title, date, icon: Icon, color }) {
             width: 58,
             height: 58,
             borderRadius: '50%',
-            background: `var(--${color}-faint)`,
-            border: `2px solid ${colorVar}`,
+            background: 'var(--amber-faint)',
+            border: '2px solid var(--amber)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            transition: 'transform var(--transition-fast), box-shadow var(--transition-fast)',
+            transition: 'transform var(--transition-fast)',
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transform = 'scale(1.07)'
-            e.currentTarget.style.boxShadow = `0 0 16px ${glowVar}`
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'scale(1)'
-            e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          <Icon size={22} style={{ color: colorVar }} aria-hidden="true" />
+          <Icon size={22} style={{ color: 'var(--amber)' }} aria-hidden="true" />
         </div>
         <span
           style={{
@@ -129,7 +124,7 @@ function HighlightRing({ title, date, icon: Icon, color }) {
   )
 }
 
-function SkillBar({ name, level, color }) {
+function SkillBar({ name, level }) {
   return (
     <div>
       <div
@@ -160,7 +155,7 @@ function SkillBar({ name, level, color }) {
           style={{
             height: '100%',
             width: `${level}%`,
-            background: `var(--${color})`,
+            background: 'var(--amber)',
             borderRadius: 'var(--radius-full)',
           }}
         />
@@ -171,7 +166,6 @@ function SkillBar({ name, level, color }) {
 
 function TimelineItem({ item, isLast }) {
   const Icon = TIMELINE_ICONS[item.icon] ?? Sparkles
-  const colorVar = `var(--${item.color})`
 
   return (
     <div style={{ display: 'flex', gap: 'var(--sp-4)' }}>
@@ -182,15 +176,15 @@ function TimelineItem({ item, isLast }) {
             width: 36,
             height: 36,
             borderRadius: '50%',
-            background: `var(--${item.color}-faint)`,
-            border: `1px solid ${colorVar}`,
+            background: 'var(--amber-faint)',
+            border: '1px solid var(--amber)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
           }}
         >
-          <Icon size={16} style={{ color: colorVar }} aria-hidden="true" />
+          <Icon size={16} style={{ color: 'var(--amber)' }} aria-hidden="true" />
         </div>
         {!isLast && (
           <div
@@ -218,7 +212,7 @@ function TimelineItem({ item, isLast }) {
         <div
           style={{
             fontSize: 'var(--fs-2xs)',
-            color: colorVar,
+            color: 'var(--amber)',
             fontFamily: 'var(--font-mono)',
             fontWeight: 'var(--fw-medium)',
           }}
@@ -258,7 +252,7 @@ export default function Profile() {
             aria-hidden="true"
             style={{
               height: 168,
-              background: 'var(--gradient-hero)',
+              background: 'var(--card-raised)',
               borderRadius: 'var(--radius-xl) var(--radius-xl) 0 0',
               position: 'relative',
               overflow: 'hidden',
@@ -410,7 +404,6 @@ export default function Profile() {
                 title={item.title}
                 date={item.date}
                 icon={TIMELINE_ICONS[item.icon] ?? Sparkles}
-                color={item.color}
               />
             ))}
           </div>
@@ -440,8 +433,8 @@ export default function Profile() {
                   padding: 'var(--sp-3) var(--sp-4)',
                   fontSize: 'var(--fs-sm)',
                   fontWeight: isActive ? 'var(--fw-semibold)' : 'var(--fw-medium)',
-                  color: isActive ? 'var(--purple)' : 'var(--text-muted)',
-                  borderBottom: isActive ? '2px solid var(--purple)' : '2px solid transparent',
+                  color: isActive ? 'var(--amber)' : 'var(--text-muted)',
+                  borderBottom: isActive ? '2px solid var(--amber)' : '2px solid transparent',
                   marginBottom: -1,
                   minHeight: 44,
                   transition: 'color var(--transition-fast), border-color var(--transition-fast)',
@@ -496,7 +489,7 @@ export default function Profile() {
                 marginBottom: 'var(--sp-1)',
               }}
             >
-              <Code2 size={15} style={{ color: 'var(--purple)' }} aria-hidden="true" />
+              <Code2 size={15} style={{ color: 'var(--amber)' }} aria-hidden="true" />
               <span
                 style={{
                   fontSize: 'var(--fs-xs)',

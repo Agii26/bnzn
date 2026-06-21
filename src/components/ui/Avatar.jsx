@@ -9,7 +9,7 @@ import { User } from 'lucide-react'
  *   name       — display name used for initials fallback
  *   size       — 'xs' | 'sm' | 'md' | 'lg' | 'xl'
  *   status     — 'online' | 'away' | 'busy' | undefined
- *   ring       — boolean: show rotating gradient story ring
+ *   ring       — boolean: show a solid amber story ring
  *   style      — extra inline styles on the wrapper
  */
 export default function Avatar({
@@ -47,13 +47,13 @@ export default function Avatar({
       style={{ position: 'relative', width: s.px, height: s.px, flexShrink: 0, ...style }}
       {...props}
     >
-      {/* Gradient story ring */}
+      {/* Amber story ring */}
       {ring && (
         <div style={{
           position: 'absolute',
           inset: -s.ring,
           borderRadius: '50%',
-          background: 'var(--gradient-brand)',
+          background: 'var(--amber)',
           zIndex: 0,
         }} />
       )}
@@ -69,15 +69,15 @@ export default function Avatar({
           height: s.px,
           borderRadius: '50%',
           overflow: 'hidden',
-          background: src ? 'transparent' : 'var(--gradient-brand)',
-          border: ring ? `${s.border}px solid var(--bg)` : 'none',
+          background: src ? 'transparent' : 'var(--surf)',
+          border: ring ? `${s.border}px solid var(--bg)` : src ? 'none' : '1px solid var(--border-bright)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'var(--font-heading)',
           fontSize: s.font,
           fontWeight: 'var(--fw-bold)',
-          color: 'white',
+          color: 'var(--amber)',
           flexShrink: 0,
         }}
       >
@@ -86,7 +86,7 @@ export default function Avatar({
         ) : initials ? (
           <span>{initials}</span>
         ) : (
-          <User size={s.font * 1.1} color="white" strokeWidth={1.5} aria-hidden="true" />
+          <User size={s.font * 1.1} color="var(--amber)" strokeWidth={1.5} aria-hidden="true" />
         )}
       </div>
 

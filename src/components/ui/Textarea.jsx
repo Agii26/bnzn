@@ -77,12 +77,12 @@ export default function Textarea({
       <div
         style={{
           background: 'var(--card)',
-          border: `1px solid ${hasError ? 'var(--red)' : focused ? 'var(--purple)' : 'var(--border)'}`,
+          border: `1px solid ${hasError ? 'var(--red)' : focused ? 'var(--amber)' : 'var(--border)'}`,
           borderRadius: 'var(--radius-md)',
           boxShadow: hasError
             ? '0 0 0 3px var(--red-faint)'
             : focused
-              ? '0 0 0 3px var(--purple-faint)'
+              ? '0 0 0 3px var(--amber-faint)'
               : 'none',
           transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)',
           opacity: disabled ? 0.5 : 1,

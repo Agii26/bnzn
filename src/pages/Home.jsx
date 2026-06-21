@@ -13,10 +13,10 @@ import projects from '@/data/projects.json'
 
 // ── Story highlight rings ──────────────────────────────────────────────────────
 const STORIES = [
-  { label: 'Dev',     Icon: Code2,       gradient: 'var(--gradient-blue-purple)', active: true  },
-  { label: 'Trading', Icon: TrendingUp,  gradient: 'var(--gradient-red-purple)',  active: false },
-  { label: 'Design',  Icon: Layers,      gradient: 'var(--gradient-purple-blue)', active: false },
-  { label: 'Blog',    Icon: BookOpen,    gradient: 'var(--gradient-brand)',        active: false },
+  { label: 'Dev',     Icon: Code2,      active: true  },
+  { label: 'Trading', Icon: TrendingUp, active: false },
+  { label: 'Design',  Icon: Layers,     active: false },
+  { label: 'Blog',    Icon: BookOpen,   active: false },
 ]
 
 // ── Build progress (mirrors the Obsidian Build Log) ─────────────────────────────
@@ -32,12 +32,12 @@ const BUILD_PHASES = [
 
 const STATUS_STYLES = {
   done:   { variant: 'solid',   color: 'green',  label: 'Done'   },
-  next:   { variant: 'glow',    color: 'purple', label: 'Next'   },
+  next:   { variant: 'glow',    color: 'amber',  label: 'Next'   },
   locked: { variant: 'outline', color: 'gray',   label: 'Locked' },
 }
 
 // ── Story ring ────────────────────────────────────────────────────────────────
-function StoryRing({ label, Icon, gradient, active }) {
+function StoryRing({ label, Icon, active }) {
   function handleActivate() {
     // Phase 5: opens domain story / filter
   }
@@ -63,7 +63,7 @@ function StoryRing({ label, Icon, gradient, active }) {
       <div
         style={{
           width: 60, height: 60, borderRadius: '50%',
-          background: active ? gradient : 'var(--border)',
+          background: active ? 'var(--amber)' : 'var(--border)',
           padding: 2.5,
           transition: 'transform var(--transition-fast)',
         }}
@@ -79,7 +79,7 @@ function StoryRing({ label, Icon, gradient, active }) {
             size={22}
             strokeWidth={1.5}
             aria-hidden="true"
-            style={{ color: active ? 'var(--text)' : 'var(--text-muted)' }}
+            style={{ color: active ? 'var(--amber)' : 'var(--text-muted)' }}
           />
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function Home() {
           ))}
 
           {/* Section divider — separates real posts from the roadmap teaser */}
-          <Divider label="What's coming" color="purple" />
+          <Divider label="What's coming" color="amber" />
 
           {/* Phase-lock card */}
           <div

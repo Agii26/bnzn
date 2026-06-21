@@ -47,7 +47,7 @@ export default function Sidebar() {
           <div style={{
             width:          42,
             height:         42,
-            background:     'var(--gradient-brand)',
+            background:     'var(--amber)',
             borderRadius:   14,
             display:        'flex',
             alignItems:     'center',
@@ -55,9 +55,9 @@ export default function Sidebar() {
             fontFamily:     'var(--font-heading)',
             fontSize:       22,
             fontWeight:     'var(--fw-black)',
-            color:          'white',
+            color:          'var(--text-inverse)',
             flexShrink:     0,
-            boxShadow:      '0 2px 16px var(--purple-glow)',
+            boxShadow:      'var(--shadow-sm)',
           }}>
             B
           </div>
@@ -73,7 +73,7 @@ export default function Sidebar() {
                 lineHeight:    'var(--lh-none)',
               }}>
                 BNZN
-                <span style={{ color: 'var(--purple)', fontWeight: 'var(--fw-bold)' }}>.dev</span>
+                <span style={{ color: 'var(--amber)', fontWeight: 'var(--fw-bold)' }}>.dev</span>
               </div>
               <div style={{
                 fontSize:    'var(--fs-xs)',
@@ -200,12 +200,11 @@ export default function Sidebar() {
             padding:      'var(--sp-2) var(--sp-3)',
           }}>
             <div
-              className="anim-breathe"
               style={{
                 width:        7,
                 height:       7,
                 borderRadius: '50%',
-                background:   'var(--purple)',
+                background:   'var(--amber)',
                 flexShrink:   0,
               }}
             />
@@ -213,7 +212,7 @@ export default function Sidebar() {
               <div style={{
                 fontSize:   'var(--fs-xs)',
                 fontWeight: 'var(--fw-semibold)',
-                color:      'var(--purple)',
+                color:      'var(--amber)',
                 lineHeight: 1,
               }}>
                 Phase 3 — Profile + Feed

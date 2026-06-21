@@ -15,13 +15,7 @@ import { Avatar, Badge, Button, Card, Tooltip } from '@/components/ui'
  * Width: var(--right-panel-width) = 280px
  */
 
-const TOP_SKILLS = [
-  { label: 'React',      color: 'blue'   },
-  { label: 'Python',     color: 'green'  },
-  { label: 'Vite',       color: 'purple' },
-  { label: 'Django',     color: 'green'  },
-  { label: 'TypeScript', color: 'blue'   },
-]
+const TOP_SKILLS = ['React', 'Python', 'Vite', 'Django', 'TypeScript']
 
 export default function RightPanel() {
   const navigate = useNavigate()
@@ -144,9 +138,9 @@ export default function RightPanel() {
         </div>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)' }}>
-          {TOP_SKILLS.map(({ label, color }) => (
+          {TOP_SKILLS.map(label => (
             <Tooltip key={label} content={label} position="top">
-              <Badge variant="outline" color={color} size="sm">
+              <Badge variant="outline" color="gray" size="sm">
                 {label}
               </Badge>
             </Tooltip>

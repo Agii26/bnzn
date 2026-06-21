@@ -5,7 +5,6 @@ export default function Explore() {
   return (
     <PagePlaceholder
       icon={Compass}
-      color="blue"
       title="Explore"
       phase={4}
       description="Discover skills, filter projects by technology or domain, and explore the full technology stack behind every build."

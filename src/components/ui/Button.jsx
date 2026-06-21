@@ -15,18 +15,18 @@ import { Loader2 } from 'lucide-react'
  */
 
 const VARIANT_BASE = {
-  primary:   { background: 'var(--purple)',      color: 'white',              border: '1px solid var(--purple)' },
-  secondary: { background: 'var(--purple-faint)', color: 'var(--purple-light)', border: '1px solid var(--purple-glow)' },
+  primary:   { background: 'var(--amber)',       color: 'var(--text-inverse)', border: '1px solid var(--amber)' },
+  secondary: { background: 'var(--amber-faint)', color: 'var(--amber)',        border: '1px solid var(--amber-glow)' },
   ghost:     { background: 'transparent',        color: 'var(--text-sub)',    border: '1px solid var(--border)' },
   danger:    { background: 'var(--red-faint)',   color: 'var(--red-light)',   border: '1px solid var(--red-glow)' },
-  glow:      { background: 'var(--gradient-brand)', color: 'white',           border: 'none', boxShadow: 'var(--glow-purple)' },
+  glow:      { background: 'var(--amber)',       color: 'var(--text-inverse)', border: '1px solid var(--amber)' },
 }
 
 const VARIANT_HOVER = {
-  primary:   { background: 'var(--purple-dark)' },
-  secondary: { background: 'rgba(168,85,247,0.15)' },
+  primary:   { background: 'var(--amber-dark)' },
+  secondary: { background: 'rgba(214,165,46,0.15)' },
   ghost:     { background: 'var(--surf)', borderColor: 'var(--border-bright)' },
-  danger:    { background: 'rgba(244,63,94,0.15)' },
+  danger:    { background: 'rgba(221,118,114,0.15)' },
   glow:      { filter: 'brightness(1.1)' },
 }
 

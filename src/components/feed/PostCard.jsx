@@ -37,7 +37,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
       count: likeCount,
       label: liked ? 'Unlike' : 'Like',
       active: liked,
-      hoverColor: 'var(--red)',
+      activeColor: 'var(--red)',
       onClick: toggleLike,
       fill: liked,
     },
@@ -46,7 +46,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
       count: post.stats.shares,
       label: 'Share',
       active: false,
-      hoverColor: 'var(--blue)',
+      activeColor: 'var(--text)',
       onClick: () => {},
       fill: false,
     },
@@ -55,7 +55,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
       count: bookmarkCount,
       label: bookmarked ? 'Remove bookmark' : 'Bookmark',
       active: bookmarked,
-      hoverColor: 'var(--purple)',
+      activeColor: 'var(--amber)',
       onClick: toggleBookmark,
       fill: bookmarked,
     },
@@ -87,7 +87,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
       <div
         style={{
           height: 164,
-          background: post.headerGradient,
+          background: 'var(--surf)',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
@@ -101,7 +101,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
             position: 'absolute',
             inset: 0,
             backgroundImage:
-              'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)',
+              'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
             backgroundSize: '22px 22px',
           }}
         />
@@ -141,13 +141,13 @@ export default function PostCard({ post, index = 0, pinned = false }) {
           {pinned ? (
             <div
               style={{
-                background: 'rgba(168,85,247,0.85)',
+                background: 'var(--amber)',
                 backdropFilter: 'blur(8px)',
                 borderRadius: 'var(--radius-full)',
                 padding: '3px 10px',
                 fontSize: 'var(--fs-2xs)',
                 fontWeight: 'var(--fw-black)',
-                color: 'white',
+                color: 'var(--text-inverse)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.8px',
               }}
@@ -158,13 +158,14 @@ export default function PostCard({ post, index = 0, pinned = false }) {
             post.featured && (
               <div
                 style={{
-                  background: 'rgba(244,63,94,0.85)',
+                  background: 'rgba(28,34,43,0.85)',
                   backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   borderRadius: 'var(--radius-full)',
                   padding: '3px 10px',
                   fontSize: 'var(--fs-2xs)',
                   fontWeight: 'var(--fw-black)',
-                  color: 'white',
+                  color: 'var(--text)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.8px',
                 }}
@@ -182,7 +183,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
               padding: '3px 10px',
               fontSize: 'var(--fs-2xs)',
               fontWeight: 'var(--fw-bold)',
-              color: 'var(--blue-light)',
+              color: 'var(--text-sub)',
               textTransform: 'uppercase',
               letterSpacing: '0.8px',
             }}
@@ -268,9 +269,9 @@ export default function PostCard({ post, index = 0, pinned = false }) {
               Benzon
               <span
                 style={{
-                  background: 'var(--blue-faint)',
-                  border: '1px solid var(--blue-glow)',
-                  color: 'var(--blue)',
+                  background: 'var(--surf)',
+                  border: '1px solid var(--border-bright)',
+                  color: 'var(--text-sub)',
                   fontSize: 'var(--fs-2xs)',
                   fontWeight: 'var(--fw-black)',
                   padding: '1px 5px',
@@ -330,7 +331,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
           }}
         >
           {post.tags.map(tag => (
-            <Badge key={tag} variant="outline" color="purple" size="sm">
+            <Badge key={tag} variant="outline" color="gray" size="sm">
               {tag}
             </Badge>
           ))}
@@ -345,7 +346,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
             paddingTop: 'var(--sp-3)',
           }}
         >
-          {ACTION_BUTTONS.map(({ Icon, count, label, hoverColor, onClick, active, fill }) => (
+          {ACTION_BUTTONS.map(({ Icon, count, label, activeColor, onClick, active, fill }) => (
             <Tooltip key={label} content={label} position="top">
               <button
                 type="button"
@@ -359,7 +360,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
                   gap: 6,
                   flex: 1,
                   minHeight: 44,
-                  color: active ? hoverColor : 'var(--text-muted)',
+                  color: active ? activeColor : 'var(--text-muted)',
                   fontSize: 'var(--fs-xs)',
                   fontWeight: 'var(--fw-medium)',
                   padding: 'var(--sp-3)',
@@ -368,11 +369,11 @@ export default function PostCard({ post, index = 0, pinned = false }) {
                     'color var(--transition-fast), background var(--transition-fast)',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.color = hoverColor
+                  e.currentTarget.style.color = active ? activeColor : 'var(--text)'
                   e.currentTarget.style.background = 'var(--surf)'
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.color = active ? hoverColor : 'var(--text-muted)'
+                  e.currentTarget.style.color = active ? activeColor : 'var(--text-muted)'
                   e.currentTarget.style.background = 'transparent'
                 }}
               >
@@ -380,7 +381,7 @@ export default function PostCard({ post, index = 0, pinned = false }) {
                   size={14}
                   strokeWidth={1.8}
                   aria-hidden="true"
-                  fill={fill ? hoverColor : 'none'}
+                  fill={fill ? activeColor : 'none'}
                 />
                 <span>{count}</span>
               </button>

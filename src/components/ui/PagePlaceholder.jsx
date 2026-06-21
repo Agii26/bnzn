@@ -1,5 +1,8 @@
 /**
- * PagePlaceholder — Phase 1 upgrade
+ * PagePlaceholder — Phase 1 component (Slate & Amber palette)
+ *
+ * A single, consistent neutral+amber treatment for all "coming soon" pages.
+ * No per-page color variation, no gradients, no decorative glow orbs.
  *
  * Props:
  *   icon        — Lucide icon component  e.g. import { User } from 'lucide-react'
@@ -7,47 +10,7 @@
  *   phase       — Phase number when real content arrives
  *   description — What this page will do
  *   features    — Array of upcoming feature strings
- *   color       — 'purple' | 'blue' | 'red' | 'green'  (default: 'purple')
  */
-
-const COLOR_MAP = {
-  purple: {
-    faint:     'var(--purple-faint)',
-    glow:      'var(--purple-glow)',
-    text:      'var(--purple)',
-    light:     'var(--purple-light)',
-    iconGlow:  'var(--glow-purple)',
-    orb:       'var(--purple-glow)',
-    gradient:  'var(--gradient-red-purple)',
-  },
-  blue: {
-    faint:     'var(--blue-faint)',
-    glow:      'var(--blue-glow)',
-    text:      'var(--blue)',
-    light:     'var(--blue-light)',
-    iconGlow:  'var(--glow-blue)',
-    orb:       'var(--blue-glow)',
-    gradient:  'var(--gradient-blue-purple)',
-  },
-  red: {
-    faint:     'var(--red-faint)',
-    glow:      'var(--red-glow)',
-    text:      'var(--red)',
-    light:     'var(--red-light)',
-    iconGlow:  'var(--glow-red)',
-    orb:       'var(--red-glow)',
-    gradient:  'var(--gradient-red-purple)',
-  },
-  green: {
-    faint:     'var(--green-faint)',
-    glow:      'var(--green-glow)',
-    text:      'var(--green)',
-    light:     'var(--green-light)',
-    iconGlow:  'var(--glow-green)',
-    orb:       'var(--green-glow)',
-    gradient:  'var(--gradient-blue-purple)',
-  },
-}
 
 export default function PagePlaceholder({
   icon: Icon,
@@ -55,10 +18,7 @@ export default function PagePlaceholder({
   phase,
   description,
   features = [],
-  color = 'purple',
 }) {
-  const c = COLOR_MAP[color]
-
   return (
     <div
       className="anim-page-enter"
@@ -68,48 +28,26 @@ export default function PagePlaceholder({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 'var(--sp-8)',
-        position: 'relative',
-        overflow: 'hidden',
       }}
     >
-      {/* Background glow orbs */}
-      <div style={{
-        position: 'absolute',
-        top: '50%', left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 480, height: 480,
-        background: `radial-gradient(circle, ${c.orb} 0%, transparent 65%)`,
-        pointerEvents: 'none',
-        borderRadius: '50%',
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '15%', left: '20%',
-        width: 220, height: 220,
-        background: 'radial-gradient(circle, var(--blue-glow) 0%, transparent 70%)',
-        pointerEvents: 'none',
-        borderRadius: '50%',
-      }} />
+      <div style={{ textAlign: 'center', maxWidth: 480 }}>
 
-      {/* Content */}
-      <div style={{ position: 'relative', textAlign: 'center', maxWidth: 480 }}>
-
-        {/* Floating icon — gradient square (no emoji) */}
+        {/* Floating icon — flat neutral square, amber icon */}
         {Icon && (
           <div
             className="anim-float"
             style={{
-              width: 80, height: 80,
-              background: c.gradient,
+              width: 72, height: 72,
+              background: 'var(--surf)',
+              border: '1px solid var(--border-bright)',
               borderRadius: 'var(--radius-xl)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto var(--sp-6)',
-              boxShadow: c.iconGlow,
             }}
           >
-            <Icon size={36} color="white" strokeWidth={1.5} aria-hidden="true" />
+            <Icon size={32} style={{ color: 'var(--amber)' }} strokeWidth={1.5} aria-hidden="true" />
           </div>
         )}
 
@@ -118,9 +56,9 @@ export default function PagePlaceholder({
           display: 'inline-flex',
           alignItems: 'center',
           gap: 'var(--sp-2)',
-          background: c.faint,
-          border: `1px solid ${c.glow}`,
-          color: c.text,
+          background: 'var(--amber-faint)',
+          border: '1px solid var(--amber-glow)',
+          color: 'var(--amber)',
           fontSize: 'var(--fs-xs)',
           fontWeight: 'var(--fw-bold)',
           letterSpacing: '1px',
@@ -132,7 +70,7 @@ export default function PagePlaceholder({
           <span style={{
             width: 5, height: 5,
             borderRadius: '50%',
-            background: c.text,
+            background: 'var(--amber)',
             display: 'inline-block',
           }} />
           Arriving in Phase {phase}
@@ -146,10 +84,7 @@ export default function PagePlaceholder({
           letterSpacing: '-1.5px',
           lineHeight: 'var(--lh-tight)',
           marginBottom: 'var(--sp-4)',
-          background: 'var(--gradient-brand)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+          color: 'var(--text)',
         }}>
           {title}
         </h1>
@@ -176,7 +111,7 @@ export default function PagePlaceholder({
             <div style={{
               fontSize: 'var(--fs-xs)',
               fontWeight: 'var(--fw-bold)',
-              color: c.text,
+              color: 'var(--amber)',
               textTransform: 'uppercase',
               letterSpacing: '1px',
               marginBottom: 'var(--sp-4)',
@@ -203,7 +138,7 @@ export default function PagePlaceholder({
                   <svg
                     width="8" height="8"
                     viewBox="0 0 8 8"
-                    fill={c.text}
+                    fill="var(--amber)"
                     aria-hidden="true"
                     style={{ flexShrink: 0, marginTop: 2 }}
                   >

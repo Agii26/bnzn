@@ -2,71 +2,60 @@
    BNZN.dev — Design Tokens
    All CSS custom properties live here. One file. One source of truth.
    To change the entire feel of the app, edit values in this file only.
+
+   Palette: "Slate & Amber" — a near-black slate background with a single
+   restrained amber accent. Green/red are reserved strictly for meaning
+   (profit/loss, online/offline, success/error) — never used decoratively.
+   No gradients anywhere in the system.
    ============================================================================= */
 
 :root {
 
   /* ── BACKGROUND LAYERS ───────────────────────────────────────────────────── */
-  --bg:           #08080E;   /* The void — deepest app background              */
-  --surf:         #0F0F1A;   /* Slightly lifted surface                        */
-  --card:         #14141F;   /* Card backgrounds                               */
-  --card-raised:  #1A1A28;   /* Elevated cards, hover states, dropdowns        */
-  --overlay:      rgba(8, 8, 14, 0.88); /* Modal / drawer backdrop             */
+  --bg:           #0B0E14;   /* Deepest app background                         */
+  --surf:         #11151D;   /* Slightly lifted surface                        */
+  --card:         #161B22;   /* Card backgrounds                               */
+  --card-raised:  #1C222B;   /* Elevated cards, hover states, dropdowns        */
+  --overlay:      rgba(11, 14, 20, 0.88); /* Modal / drawer backdrop           */
 
   /* ── BORDERS ─────────────────────────────────────────────────────────────── */
-  --border:        #1E1E30;  /* Default border                                 */
-  --border-muted:  #141420;  /* Subtle / inner borders                         */
-  --border-bright: #2A2A42;  /* Highlighted / hover borders                    */
+  --border:        #232A35;  /* Default border                                 */
+  --border-muted:  #1A2029;  /* Subtle / inner borders                         */
+  --border-bright: #313B49;  /* Highlighted / hover borders                    */
 
   /* ── TEXT ────────────────────────────────────────────────────────────────── */
-  --text:          #EEEEF5;  /* Primary readable text                          */
-  --text-sub:      #8888AA;  /* Secondary — descriptions, meta                 */
-  --text-muted:    #7E7E9C;  /* Disabled, placeholder, timestamps (4.6:1 on --card, AA) */
-  --text-inverse:  #08080E;  /* Text on bright colored backgrounds             */
+  --text:          #E6E9ED;  /* Primary readable text        (15.9:1 on --bg)  */
+  --text-sub:      #9BA3B0;  /* Secondary — descriptions, meta (7.6:1 on --bg) */
+  --text-muted:    #7B8492;  /* Disabled, placeholder, timestamps (5.1:1 AA)   */
+  --text-inverse:  #0B0E14;  /* Dark text used on top of solid --amber         */
 
-  /* ── BRAND: RED ──────────────────────────────────────────────────────────── */
-  --red:           #F43F5E;
-  --red-dark:      #E11D48;
-  --red-light:     #FB7185;
-  --red-faint:     rgba(244,  63,  94, 0.08);
-  --red-glow:      rgba(244,  63,  94, 0.28);
+  /* ── ACCENT: AMBER (the only decorative/brand color — use sparingly) ──────
+     Solid buttons / badges use dark --text-inverse on top of --amber for
+     contrast (8.5:1), not white. */
+  --amber:         #D6A52E;
+  --amber-dark:    #9C7209;
+  --amber-light:   #E8C168;
+  --amber-faint:   rgba(214, 165, 46, 0.10);
+  --amber-glow:    rgba(214, 165, 46, 0.25);
 
-  /* ── BRAND: BLUE ─────────────────────────────────────────────────────────── */
-  --blue:          #3B82F6;
-  --blue-dark:     #2563EB;
-  --blue-light:    #60A5FA;
-  --blue-faint:    rgba( 59, 130, 246, 0.08);
-  --blue-glow:     rgba( 59, 130, 246, 0.28);
+  /* ── SEMANTIC: GREEN (success / profit / online — meaning only) ──────────── */
+  --green:         #6FB888;
+  --green-dark:    #4F9B6E;
+  --green-light:   #8FCBA3;
+  --green-faint:   rgba(111, 184, 136, 0.10);
+  --green-glow:    rgba(111, 184, 136, 0.25);
 
-  /* ── BRAND: PURPLE (primary identity) ───────────────────────────────────── */
-  --purple:        #A855F7;
-  --purple-dark:   #7C3AED;
-  --purple-light:  #C084FC;
-  --purple-faint:  rgba(168,  85, 247, 0.08);
-  --purple-glow:   rgba(168,  85, 247, 0.28);
-
-  /* ── ACCENT: GREEN (profit / active / available) ────────────────────────── */
-  --green:         #22C55E;
-  --green-dark:    #16A34A;
-  --green-light:   #4ADE80;
-  --green-faint:   rgba( 34, 197,  94, 0.08);
-  --green-glow:    rgba( 34, 197,  94, 0.28);
+  /* ── SEMANTIC: RED (error / loss / unread — meaning only) ─────────────────── */
+  --red:           #DD7672;
+  --red-dark:      #C75450;
+  --red-light:     #E89A97;
+  --red-faint:     rgba(221, 118, 114, 0.10);
+  --red-glow:      rgba(221, 118, 114, 0.25);
 
   /* ── NEUTRALS ────────────────────────────────────────────────────────────── */
-  --gray:          #71717A;
-  --gray-dark:     #52525B;
-  --gray-light:    #A1A1AA;
-  --amber:         #F59E0B;
-  --amber-faint:   rgba(245, 158,  11, 0.08);
-
-  /* ── GRADIENTS ───────────────────────────────────────────────────────────── */
-  --gradient-brand:        linear-gradient(135deg, #F43F5E, #A855F7, #3B82F6);
-  --gradient-red-purple:   linear-gradient(135deg, #F43F5E, #A855F7);
-  --gradient-blue-purple:  linear-gradient(135deg, #3B82F6, #A855F7);
-  --gradient-purple-blue:  linear-gradient(135deg, #A855F7, #3B82F6);
-  --gradient-hero:         linear-gradient(135deg, #0C0C1E 0%, #150A2E 55%, #0A160C 100%);
-  --gradient-card-tint:    linear-gradient(180deg, rgba(168, 85, 247, 0.04) 0%, transparent 100%);
-  --gradient-sidebar:      linear-gradient(180deg, var(--bg) 0%, rgba(8,8,14,0.95) 100%);
+  --gray:          #5C6371;
+  --gray-dark:     #454B57;
+  --gray-light:    #828A97;
 
   /* ── SPACING SCALE (4px base) ────────────────────────────────────────────── */
   --sp-1:    4px;
@@ -92,8 +81,6 @@
   --radius-full: 9999px;
 
   /* ── TYPOGRAPHY: FONTS ───────────────────────────────────────────────────── */
-  /* NOTE: Syne is used for both display and headings in Phase 0.
-     Clash Display (Fontshare) can replace --font-display in Phase 1. */
   --font-display:  'Syne', system-ui, sans-serif;
   --font-heading:  'Syne', system-ui, sans-serif;
   --font-body:     'DM Sans', system-ui, sans-serif;
@@ -128,12 +115,12 @@
   --fw-black:     900;
 
   /* ── LAYOUT DIMENSIONS ───────────────────────────────────────────────────── */
-  --sidebar-width:       240px;   /* Desktop left nav                          */
-  --sidebar-collapsed:    72px;   /* Collapsed sidebar (Phase 2)               */
-  --right-panel-width:   280px;   /* Right panel (Phase 2)                     */
-  --feed-max-width:      600px;   /* Max width of main feed content            */
-  --app-max-width:      1200px;   /* Overall app container                     */
-  --header-height:        56px;   /* Sticky header bar (Phase 2)               */
+  --sidebar-width:       240px;
+  --sidebar-collapsed:    72px;
+  --right-panel-width:   280px;
+  --feed-max-width:      600px;
+  --app-max-width:      1200px;
+  --header-height:        56px;
 
   /* ── Z-INDEX SCALE ───────────────────────────────────────────────────────── */
   --z-base:      1;
@@ -144,18 +131,12 @@
   --z-modal:    80;
   --z-toast:   100;
 
-  /* ── SHADOWS ─────────────────────────────────────────────────────────────── */
+  /* ── SHADOWS — plain elevation only, no colored "glow" shadows ──────────── */
   --shadow-xs: 0 1px  3px rgba(0, 0, 0, 0.40);
   --shadow-sm: 0 2px  8px rgba(0, 0, 0, 0.50);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.60);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.70);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.80);
-
-  /* Glow shadows — active, hover, brand moments */
-  --glow-red:    0 0 20px rgba(244,  63,  94, 0.35);
-  --glow-blue:   0 0 20px rgba( 59, 130, 246, 0.35);
-  --glow-purple: 0 0 20px rgba(168,  85, 247, 0.35);
-  --glow-green:  0 0 20px rgba( 34, 197,  94, 0.35);
 
   /* ── EASING CURVES ───────────────────────────────────────────────────────── */
   --ease-out:     cubic-bezier(0.16, 1,    0.3,  1);

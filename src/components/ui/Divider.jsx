@@ -4,13 +4,12 @@
  * Props:
  *   orientation — 'horizontal' | 'vertical'  (default 'horizontal')
  *   label       — optional text/node centered in the line (horizontal only)
- *   color       — 'purple' | 'blue' | 'red' | 'green' | undefined (default border color)
+ *   color       — 'amber' | 'red' | 'green' | undefined (default border color)
  *   style       — extra inline styles
  */
 
 const COLOR_MAP = {
-  purple: 'var(--purple-glow)',
-  blue:   'var(--blue-glow)',
+  amber:  'var(--amber-glow)',
   red:    'var(--red-glow)',
   green:  'var(--green-glow)',
 }

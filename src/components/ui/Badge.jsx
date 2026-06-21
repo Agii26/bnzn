@@ -1,9 +1,10 @@
 /**
- * Badge / Pill — Phase 1 component
+ * Badge / Pill — Phase 1 component (Slate & Amber palette)
  *
  * Props:
- *   variant  — 'solid' | 'outline' | 'glow'
- *   color    — 'purple' | 'blue' | 'red' | 'green' | 'gray'
+ *   variant  — 'solid' | 'outline' | 'glow'  ('glow' is a visual alias of 'outline' —
+ *               kept for backward-compat call sites, no colored glow is applied)
+ *   color    — 'amber' | 'red' | 'green' | 'gray'
  *   size     — 'sm' | 'md' | 'lg'
  *   dot      — boolean: show a small colored dot prefix
  *   mono     — boolean: use font-mono (default true for tag/tech labels)
@@ -11,30 +12,25 @@
  */
 
 const COLOR_MAP = {
-  purple: {
-    solid:   { background: 'var(--purple)',       color: 'white',                border: 'none' },
-    outline: { background: 'var(--purple-faint)',  color: 'var(--purple-light)',  border: '1px solid var(--purple-glow)' },
-    glow:    { background: 'var(--purple-faint)',  color: 'var(--purple-light)',  border: '1px solid var(--purple-glow)', boxShadow: 'var(--glow-purple)' },
-  },
-  blue: {
-    solid:   { background: 'var(--blue)',          color: 'white',                border: 'none' },
-    outline: { background: 'var(--blue-faint)',    color: 'var(--blue-light)',    border: '1px solid var(--blue-glow)' },
-    glow:    { background: 'var(--blue-faint)',    color: 'var(--blue-light)',    border: '1px solid var(--blue-glow)',   boxShadow: 'var(--glow-blue)' },
+  amber: {
+    solid:   { background: 'var(--amber)',        color: 'var(--text-inverse)',  border: 'none' },
+    outline: { background: 'var(--amber-faint)',   color: 'var(--amber)',         border: '1px solid var(--amber-glow)' },
+    glow:    { background: 'var(--amber-faint)',   color: 'var(--amber)',         border: '1px solid var(--amber-glow)' },
   },
   red: {
-    solid:   { background: 'var(--red)',           color: 'white',                border: 'none' },
+    solid:   { background: 'var(--red)',           color: 'var(--text-inverse)',  border: 'none' },
     outline: { background: 'var(--red-faint)',     color: 'var(--red-light)',     border: '1px solid var(--red-glow)' },
-    glow:    { background: 'var(--red-faint)',     color: 'var(--red-light)',     border: '1px solid var(--red-glow)',    boxShadow: 'var(--glow-red)' },
+    glow:    { background: 'var(--red-faint)',     color: 'var(--red-light)',     border: '1px solid var(--red-glow)' },
   },
   green: {
-    solid:   { background: 'var(--green)',         color: 'white',                border: 'none' },
+    solid:   { background: 'var(--green)',         color: 'var(--text-inverse)',  border: 'none' },
     outline: { background: 'var(--green-faint)',   color: 'var(--green-light)',   border: '1px solid var(--green-glow)' },
-    glow:    { background: 'var(--green-faint)',   color: 'var(--green-light)',   border: '1px solid var(--green-glow)',  boxShadow: 'var(--glow-green)' },
+    glow:    { background: 'var(--green-faint)',   color: 'var(--green-light)',   border: '1px solid var(--green-glow)' },
   },
   gray: {
     solid:   { background: 'var(--gray)',          color: 'white',                border: 'none' },
     outline: { background: 'transparent',          color: 'var(--gray-light)',    border: '1px solid var(--border-bright)' },
-    glow:    { background: 'var(--surf)',          color: 'var(--text-sub)',      border: '1px solid var(--border-bright)' },
+    glow:    { background: 'var(--surf)',           color: 'var(--text-sub)',      border: '1px solid var(--border-bright)' },
   },
 }
 
@@ -45,8 +41,7 @@ const SIZE_MAP = {
 }
 
 const DOT_COLOR = {
-  purple: 'var(--purple)',
-  blue:   'var(--blue)',
+  amber: 'var(--amber)',
   red:    'var(--red)',
   green:  'var(--green)',
   gray:   'var(--gray)',
@@ -54,7 +49,7 @@ const DOT_COLOR = {
 
 export default function Badge({
   variant = 'outline',
-  color   = 'purple',
+  color   = 'amber',
   size    = 'md',
   dot     = false,
   mono    = true,

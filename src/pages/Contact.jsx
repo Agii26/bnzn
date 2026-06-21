@@ -5,7 +5,6 @@ export default function Contact() {
   return (
     <PagePlaceholder
       icon={MessageSquare}
-      color="green"
       title="Contact"
       phase={4}
       description="Reach out for collaborations, freelance work, or just to say hi — styled like a DM compose window."

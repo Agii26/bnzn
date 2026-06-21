@@ -39,12 +39,15 @@ h1, h2, h3, h4, h5, h6 {
 p { line-height: var(--lh-normal); }
 
 a {
-  color: var(--blue);
+  color: var(--amber);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-a:hover { color: var(--purple); }
+a:hover {
+  color: var(--amber-light);
+  text-decoration: underline;
+}
 
 button {
   cursor: pointer;
@@ -94,13 +97,13 @@ input, textarea, select {
 
 /* ── TEXT SELECTION ──────────────────────────────────────────────────────────── */
 ::selection {
-  background: var(--purple-faint);
-  color: var(--purple-light);
+  background: var(--amber-faint);
+  color: var(--amber-light);
 }
 
 /* ── FOCUS RING ──────────────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--purple);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -186,11 +189,11 @@ input, textarea, select {
 }
 
 .nav-item.active {
-  color:       var(--purple);
-  background:  var(--purple-faint);
+  color:       var(--amber);
+  background:  var(--amber-faint);
   font-weight: var(--fw-semibold);
   /* Inset left-edge indicator */
-  box-shadow:  inset 3px 0 0 var(--purple);
+  box-shadow:  inset 3px 0 0 var(--amber);
 }
 
 /* ── BOTTOM NAV — mobile only ───────────────────────────────────────────────── */
@@ -205,22 +208,6 @@ input, textarea, select {
 /* Hidden on narrow screens, shown ≥520px */
 .header-search {
   display: none;
-}
-
-/* ── UTILITY: GRADIENT TEXT ──────────────────────────────────────────────────── */
-
-.text-gradient {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-rp {
-  background: var(--gradient-red-purple);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* ── UTILITY: PAGE CONTENT CENTERING ─────────────────────────────────────────── */

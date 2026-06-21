@@ -4,23 +4,20 @@
     "title": "Started BNZN.dev",
     "subtitle": "Kicked off a 7-phase, session-logged portfolio build",
     "date": "2026",
-    "icon": "Sparkles",
-    "color": "purple"
+    "icon": "Sparkles"
   },
   {
     "id": "tradedesk-launch",
     "title": "Shipped TradeDesk v2",
     "subtitle": "Solo-built crypto dashboard with a confluence scoring engine",
     "date": "2026",
-    "icon": "Rocket",
-    "color": "red"
+    "icon": "Rocket"
   },
   {
     "id": "internship",
     "title": "Government IT Internship",
-    "subtitle": "Provincial IT Office of Bulacan — geospatial systems",
+    "subtitle": "Provincial IT Office of Bulacan \u2014 geospatial systems",
     "date": "2025",
-    "icon": "Briefcase",
-    "color": "blue"
+    "icon": "Briefcase"
   }
 ]
