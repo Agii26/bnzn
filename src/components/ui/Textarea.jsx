@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useState, forwardRef } from 'react'
 import { AlertCircle } from 'lucide-react'
 
 /**
@@ -14,9 +14,10 @@ import { AlertCircle } from 'lucide-react'
  *   fullWidth  — boolean, default true
  *   required   — boolean, shows an asterisk next to the label
  *   style      — extra inline styles on the outer wrapper
+ *   ref        — forwarded to the native <textarea> element (e.g. for focus-management)
  *   ...props   — passed straight to the <textarea> (value, onChange, placeholder, disabled, etc.)
  */
-export default function Textarea({
+const Textarea = forwardRef(function Textarea({
   label,
   helperText,
   error,
@@ -30,12 +31,11 @@ export default function Textarea({
   value,
   style = {},
   ...props
-}) {
+}, forwardedRef) {
   const [focused, setFocused] = useState(false)
   const generatedId = useId()
   const inputId  = id || generatedId
   const helperId = `${inputId}-helper`
-  const taRef = useRef(null)
 
   const hasError = !!error
   const currentLength = typeof value === 'string' ? value.length : 0
@@ -89,7 +89,7 @@ export default function Textarea({
         }}
       >
         <textarea
-          ref={taRef}
+          ref={forwardedRef}
           id={inputId}
           rows={rows}
           maxLength={maxLength}
@@ -157,4 +157,8 @@ export default function Textarea({
       )}
     </div>
   )
-}
+})
+
+Textarea.displayName = 'Textarea'
+
+export default Textarea

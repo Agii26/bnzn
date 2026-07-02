@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useId, useState, forwardRef } from 'react'
 import { AlertCircle, Eye, EyeOff } from 'lucide-react'
 
 /**
@@ -15,6 +15,7 @@ import { AlertCircle, Eye, EyeOff } from 'lucide-react'
  *   fullWidth  — boolean, default true
  *   required   — boolean, shows an asterisk next to the label
  *   style      — extra inline styles on the outer wrapper
+ *   ref        — forwarded to the native <input> element (e.g. for focus-management)
  *   ...props   — passed straight to the <input> (value, onChange, type, placeholder, disabled, etc.)
  */
 
@@ -24,7 +25,7 @@ const SIZE_MAP = {
   lg: { height: 48, fontSize: 'var(--fs-base)',padding: '0 var(--sp-4)', iconSize: 18, gap: 'var(--sp-3)' },
 }
 
-export default function Input({
+const Input = forwardRef(function Input({
   label,
   helperText,
   error,
@@ -38,7 +39,7 @@ export default function Input({
   disabled = false,
   style = {},
   ...props
-}) {
+}, ref) {
   const [focused, setFocused] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const generatedId = useId()
@@ -105,6 +106,7 @@ export default function Input({
         )}
 
         <input
+          ref={ref}
           id={inputId}
           type={isPassword && showPassword ? 'text' : type}
           disabled={disabled}
@@ -172,4 +174,8 @@ export default function Input({
       )}
     </div>
   )
-}
+})
+
+Input.displayName = 'Input'
+
+export default Input

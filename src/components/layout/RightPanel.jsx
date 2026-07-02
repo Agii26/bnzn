@@ -154,7 +154,7 @@ export default function RightPanel() {
           color:      'var(--text-muted)',
           fontFamily: 'var(--font-mono)',
         }}>
-          Full skill P&amp;L chart → Phase 4
+          Full skill market-cap view → Phase 4
         </div>
       </Card>
 

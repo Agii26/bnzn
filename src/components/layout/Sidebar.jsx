@@ -215,7 +215,7 @@ export default function Sidebar() {
                 color:      'var(--amber)',
                 lineHeight: 1,
               }}>
-                Phase 3 — Profile + Feed
+                Phase 4 — Explore + Contact
               </div>
               <div style={{
                 fontSize:  'var(--fs-2xs)',

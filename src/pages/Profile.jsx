@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { Avatar, Badge, Button, Tooltip } from '@/components/ui'
 import PostCard from '@/components/feed/PostCard'
+import SkillBar from '@/components/skills/SkillBar'
 import projects from '@/data/projects.json'
 import skills from '@/data/skills.json'
 import timeline from '@/data/timeline.json'
@@ -121,46 +122,6 @@ function HighlightRing({ title, date, icon: Icon }) {
         </span>
       </div>
     </Tooltip>
-  )
-}
-
-function SkillBar({ name, level }) {
-  return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: 6,
-        }}
-      >
-        <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text)', fontWeight: 'var(--fw-medium)' }}>
-          {name}
-        </span>
-        <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-          {level}%
-        </span>
-      </div>
-      <div
-        style={{
-          height: 6,
-          borderRadius: 'var(--radius-full)',
-          background: 'var(--surf)',
-          border: '1px solid var(--border)',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          className="anim-fade-left"
-          style={{
-            height: '100%',
-            width: `${level}%`,
-            background: 'var(--amber)',
-            borderRadius: 'var(--radius-full)',
-          }}
-        />
-      </div>
-    </div>
   )
 }
 

@@ -24,8 +24,8 @@ const BUILD_PHASES = [
   { phase: 0, name: 'Foundation',          status: 'done'   },
   { phase: 1, name: 'Design System',       status: 'done'   },
   { phase: 2, name: 'App Shell',           status: 'done'   },
-  { phase: 3, name: 'Profile + Feed',      status: 'next'   },
-  { phase: 4, name: 'Explore + Contact',   status: 'locked' },
+  { phase: 3, name: 'Profile + Feed',      status: 'done'   },
+  { phase: 4, name: 'Explore + Contact',   status: 'next'   },
   { phase: 5, name: 'Innovation Layer',    status: 'locked' },
   { phase: 6, name: 'Polish + Deploy',     status: 'locked' },
 ]
