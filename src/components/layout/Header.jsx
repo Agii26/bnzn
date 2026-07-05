@@ -1,6 +1,7 @@
 import { useMatches, useNavigate } from 'react-router-dom'
 import { Search, Bell } from 'lucide-react'
 import { Input, Avatar } from '@/components/ui'
+import { useNotificationsStore } from '@/store/notificationsStore'
 
 /**
  * Header — Phase 2 component
@@ -19,8 +20,8 @@ export default function Header() {
     .map(m => m.handle.title)
     .at(-1) ?? 'BNZN'
 
-  // Fake unread count for Phase 3 — real data wired in Phase 4
-  const UNREAD = 3
+  // Real unread count as of Phase 4 (was a hardcoded UNREAD = 3 through Phase 3)
+  const UNREAD = useNotificationsStore(s => s.unreadCount)
 
   return (
     <header
@@ -76,6 +77,7 @@ export default function Header() {
           <button
             type="button"
             aria-label={`Notifications — ${UNREAD} unread`}
+            onClick={() => navigate('/notifications')}
             style={{
               width:          40,
               height:         40,

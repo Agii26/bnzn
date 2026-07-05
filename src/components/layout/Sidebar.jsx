@@ -215,14 +215,14 @@ export default function Sidebar() {
                 color:      'var(--amber)',
                 lineHeight: 1,
               }}>
-                Phase 4 — Explore + Contact
+                Phase 5 — Innovation Layer
               </div>
               <div style={{
                 fontSize:  'var(--fs-2xs)',
                 color:     'var(--text-muted)',
                 marginTop: 2,
               }}>
-                In progress
+                Up next
               </div>
             </div>
           </div>

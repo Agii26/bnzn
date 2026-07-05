@@ -135,11 +135,11 @@ All visual decisions live in `src/styles/tokens.css`.
 | # | Phase | Status | ETA |
 |---|-------|--------|-----|
 | **0** | Foundation — scaffold, tokens, router | ✅ **Done** | — |
-| **1** | Design System — Button, Card, Badge, Avatar, Input | ⏳ Next | 2–3 days |
-| **2** | App Shell — right panel, mobile nav, header | ⏳ | 2–3 days |
-| **3** | Profile + Feed | ⏳ | 3–4 days |
-| **4** | Explore + Contact + Notifications | ⏳ | 2 days |
-| **5** | Innovation Layer — candlestick, market cap skills, bull/bear | ⏳ | 3–5 days |
+| **1** | Design System — Button, Card, Badge, Avatar, Input | ✅ **Done** | — |
+| **2** | App Shell — right panel, mobile nav, header | ✅ **Done** | — |
+| **3** | Profile + Feed | ✅ **Done** | — |
+| **4** | Explore + Contact + Notifications | ✅ **Done** | — |
+| **5** | Innovation Layer — candlestick, market cap skills, bull/bear | ⏳ **Next** | 3–5 days |
 | **6** | Polish + Deploy to Vercel | ⏳ | 2–3 days |
 
 ---
@@ -158,4 +158,4 @@ Add `VITE_APP_URL=https://bnzn.dev` in Vercel environment variables.
 
 ---
 
-*BNZN.dev — Built with Claude.ai · Phase 0 complete*
+*BNZN.dev — Built with Claude.ai · Phase 4 complete*

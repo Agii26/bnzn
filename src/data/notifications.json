@@ -1,0 +1,58 @@
+[
+  {
+    "id": "n7",
+    "type": "milestone",
+    "title": "Phase 4 shipped: Explore + Contact",
+    "message": "Skill market ticker, tag filters, project search, and the DM-style contact form are live.",
+    "date": "2026-07-02",
+    "read": false
+  },
+  {
+    "id": "n6",
+    "type": "system",
+    "title": "Redesign: Slate & Amber",
+    "message": "Retired the multi-color gradient system for a single neutral + amber palette across the whole app.",
+    "date": "2026-06-21",
+    "read": true
+  },
+  {
+    "id": "n5",
+    "type": "milestone",
+    "title": "Phase 3 shipped: Profile + Feed",
+    "message": "Pinned projects, the social-style feed, and the profile page are live.",
+    "date": "2026-06-20",
+    "read": true
+  },
+  {
+    "id": "n4",
+    "type": "skill",
+    "title": "React proficiency updated: 90%",
+    "message": "Bumped after shipping the Phase 3 feed and profile components.",
+    "date": "2026-06-20",
+    "read": true
+  },
+  {
+    "id": "n3",
+    "type": "milestone",
+    "title": "Phase 2 shipped: App Shell",
+    "message": "Sidebar, mobile bottom nav, and the routed app frame are live.",
+    "date": "2026-06-17",
+    "read": true
+  },
+  {
+    "id": "n2",
+    "type": "milestone",
+    "title": "New pinned project: TradeDesk v2",
+    "message": "Crypto trading dashboard with a 10-criterion confluence scoring engine added to the feed.",
+    "date": "2026-06-17",
+    "read": true
+  },
+  {
+    "id": "n1",
+    "type": "milestone",
+    "title": "BNZN.dev kicked off",
+    "message": "Started a 7-phase, session-logged portfolio build.",
+    "date": "2026-06-17",
+    "read": true
+  }
+]

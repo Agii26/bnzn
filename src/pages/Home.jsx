@@ -25,8 +25,8 @@ const BUILD_PHASES = [
   { phase: 1, name: 'Design System',       status: 'done'   },
   { phase: 2, name: 'App Shell',           status: 'done'   },
   { phase: 3, name: 'Profile + Feed',      status: 'done'   },
-  { phase: 4, name: 'Explore + Contact',   status: 'next'   },
-  { phase: 5, name: 'Innovation Layer',    status: 'locked' },
+  { phase: 4, name: 'Explore + Contact',   status: 'done'   },
+  { phase: 5, name: 'Innovation Layer',    status: 'next'   },
   { phase: 6, name: 'Polish + Deploy',     status: 'locked' },
 ]
 
@@ -155,14 +155,14 @@ export default function Home() {
                 color: 'var(--text)',
                 marginBottom: 6,
               }}>
-                Discovery tools arrive in Phase 4
+                The Innovation Layer arrives in Phase 5
               </div>
               <div style={{
                 fontSize: 'var(--fs-sm)',
                 color: 'var(--text-muted)',
                 lineHeight: 'var(--lh-relaxed)',
               }}>
-                Tag filters · Skill market widget · Search across posts
+                Candlestick career timeline · Market-cap skill visualization · Bull/bear framing
               </div>
             </div>
             <Button
