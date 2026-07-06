@@ -4,12 +4,13 @@ import {
   TrendingUp,
   Layers,
   BookOpen,
-  Lock,
   ArrowRight,
 } from 'lucide-react'
 import { Badge, Button, Divider, Modal } from '@/components/ui'
 import PostCard from '@/components/feed/PostCard'
+import ActivityChart from '@/components/build/ActivityChart'
 import projects from '@/data/projects.json'
+import commitActivity from '@/data/commitActivity.json'
 
 // ── Story highlight rings ──────────────────────────────────────────────────────
 const STORIES = [
@@ -26,8 +27,8 @@ const BUILD_PHASES = [
   { phase: 2, name: 'App Shell',           status: 'done'   },
   { phase: 3, name: 'Profile + Feed',      status: 'done'   },
   { phase: 4, name: 'Explore + Contact',   status: 'done'   },
-  { phase: 5, name: 'Innovation Layer',    status: 'next'   },
-  { phase: 6, name: 'Polish + Deploy',     status: 'locked' },
+  { phase: 5, name: 'Build Activity',      status: 'done'   },
+  { phase: 6, name: 'Polish + Deploy',     status: 'next'   },
 ]
 
 const STATUS_STYLES = {
@@ -122,56 +123,22 @@ export default function Home() {
             <PostCard key={post.id} post={post} index={i} pinned={post.pinned} />
           ))}
 
-          {/* Section divider — separates real posts from the roadmap teaser */}
-          <Divider label="What's coming" color="amber" />
+          {/* Section divider — this used to precede a locked teaser card;
+              Phase 5 shipped, so it now precedes real content instead. */}
+          <Divider label="Build activity" color="amber" />
 
-          {/* Phase-lock card */}
-          <div
-            className="anim-fade-up delay-4"
-            style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-xl)',
-              padding: 'var(--sp-8)',
-              textAlign: 'center',
-              display: 'flex', flexDirection: 'column',
-              alignItems: 'center', gap: 'var(--sp-4)',
-            }}
-          >
-            <div style={{
-              width: 48, height: 48,
-              borderRadius: 'var(--radius-lg)',
-              background: 'var(--surf)',
-              border: '1px solid var(--border)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Lock size={20} aria-hidden="true" style={{ color: 'var(--text-muted)' }} />
-            </div>
-            <div>
-              <div style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'var(--fs-md)',
-                fontWeight: 'var(--fw-bold)',
-                color: 'var(--text)',
-                marginBottom: 6,
-              }}>
-                The Innovation Layer arrives in Phase 5
-              </div>
-              <div style={{
-                fontSize: 'var(--fs-sm)',
-                color: 'var(--text-muted)',
-                lineHeight: 'var(--lh-relaxed)',
-              }}>
-                Candlestick career timeline · Market-cap skill visualization · Bull/bear framing
-              </div>
-            </div>
+          <div className="anim-fade-up delay-4">
+            <ActivityChart commits={commitActivity} />
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
               variant="secondary"
               size="sm"
               rightIcon={ArrowRight}
               onClick={() => setBuildLogOpen(true)}
             >
-              View Build Log
+              View full build log
             </Button>
           </div>
         </div>

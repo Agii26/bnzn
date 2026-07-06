@@ -1,0 +1,10 @@
+[
+  { "hash": "68ac146", "date": "2026-06-17", "label": "Initial commit: seed bnzn-dev project", "insertions": 3293, "deletions": 0,   "net": 3293 },
+  { "hash": "be628cc", "date": "2026-06-17", "label": "Phase 2 — App Shell",                   "insertions": 905,  "deletions": 260, "net": 645  },
+  { "hash": "b016a96", "date": "2026-06-17", "label": "Fix Phase 2 layout bugs",                "insertions": 116,  "deletions": 53,  "net": 63   },
+  { "hash": "4d707ff", "date": "2026-06-17", "label": "Fix: hide BottomNav on desktop",         "insertions": 10,   "deletions": 1,   "net": 9    },
+  { "hash": "fac19a1", "date": "2026-06-20", "label": "Phase 3: Profile + Feed",                "insertions": 1048, "deletions": 323, "net": 725  },
+  { "hash": "e897095", "date": "2026-06-21", "label": "Redesign: Slate & Amber palette",        "insertions": 865,  "deletions": 943, "net": -78  },
+  { "hash": "4dc2568", "date": "2026-07-02", "label": "Phase 4: Explore + Contact pages",       "insertions": 813,  "deletions": 86,  "net": 727  },
+  { "hash": "a930298", "date": "2026-07-05", "label": "Phase 4 complete: Notifications",        "insertions": 370,  "deletions": 30,  "net": 340  }
+]

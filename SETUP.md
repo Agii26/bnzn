@@ -83,7 +83,8 @@ bnzn-dev/
 │   ├── data/
 │   │   ├── projects.json          ← Your projects (filled in Phase 3)
 │   │   ├── skills.json            ← Skills + market data (Phase 4)
-│   │   └── timeline.json          ← Career events for candlestick (Phase 5)
+│   │   ├── timeline.json          ← Career events (Profile page)
+│   │   └── commitActivity.json    ← Real net-lines-per-commit snapshot (Phase 5)
 │   └── main.jsx                   ← App entry point
 ├── index.html
 ├── vite.config.js                 ← @ path alias configured
@@ -139,8 +140,8 @@ All visual decisions live in `src/styles/tokens.css`.
 | **2** | App Shell — right panel, mobile nav, header | ✅ **Done** | — |
 | **3** | Profile + Feed | ✅ **Done** | — |
 | **4** | Explore + Contact + Notifications | ✅ **Done** | — |
-| **5** | Innovation Layer — candlestick, market cap skills, bull/bear | ⏳ **Next** | 3–5 days |
-| **6** | Polish + Deploy to Vercel | ⏳ | 2–3 days |
+| **5** | Build Activity — real net-lines-per-commit chart on Home | ✅ **Done** | — |
+| **6** | Polish + Deploy to Vercel | ⏳ **Next** | 2–3 days |
 
 ---
 

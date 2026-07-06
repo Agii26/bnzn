@@ -215,7 +215,7 @@ export default function Sidebar() {
                 color:      'var(--amber)',
                 lineHeight: 1,
               }}>
-                Phase 5 — Innovation Layer
+                Phase 6 — Polish + Deploy
               </div>
               <div style={{
                 fontSize:  'var(--fs-2xs)',
